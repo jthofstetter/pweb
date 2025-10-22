@@ -62,3 +62,39 @@ if (quoteElement) {
     prefersReducedMotion.addListener(handleMotionPreferenceChange);
   }
 }
+
+const bubbleButtons = document.querySelectorAll("[data-interest]");
+const bubbleLabel = document.querySelector("[data-interest-label]");
+const bubbleDescription = document.querySelector("[data-interest-description]");
+let activeBubble = null;
+
+function updateBubbleDetail(button) {
+  if (!bubbleLabel || !bubbleDescription) return;
+
+  const { label, description } = button.dataset;
+
+  if (activeBubble) {
+    activeBubble.classList.remove("is-active");
+    activeBubble.setAttribute("aria-pressed", "false");
+  }
+
+  activeBubble = button;
+  activeBubble.classList.add("is-active");
+  activeBubble.setAttribute("aria-pressed", "true");
+
+  bubbleLabel.textContent = label ?? "Special Interests";
+  bubbleDescription.textContent =
+    description ?? "Mehr zu diesem Schwerpunkt folgt in Kürze.";
+}
+
+if (bubbleButtons.length) {
+  bubbleButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", "false");
+
+    button.addEventListener("click", () => updateBubbleDetail(button));
+    button.addEventListener("mouseenter", () => updateBubbleDetail(button));
+    button.addEventListener("focus", () => updateBubbleDetail(button));
+  });
+
+  updateBubbleDetail(bubbleButtons[0]);
+}
