@@ -36,47 +36,44 @@
 
       <section class="timeline">
         <h2>Timeline</h2>
-        <div class="timeline__wrapper">
-          <div class="timeline__line"></div>
-          <div class="timeline__items">
-            <article class="timeline__item">
-              <a
-                class="timeline__box timeline__link"
-                href="timeline-volksschule.html"
-              >
-                <h3>2012 – 2016</h3>
-                <p class="timeline__subtitle">Volksschule Pfaffenschlag</p>
-              </a>
-            </article>
-            <article class="timeline__item">
-              <a class="timeline__box timeline__link" href="timeline-nms.html">
-                <h3>2016 – 2020</h3>
-                <p class="timeline__subtitle">
-                  NMS Waidhofen a. d. Thaya (Kreativ)
-                </p>
-              </a>
-            </article>
-            <article class="timeline__item">
-              <a
-                class="timeline__box timeline__link"
-                href="timeline-htl-krems.html"
-              >
-                <h3>2020 – 2025</h3>
-                <p class="timeline__subtitle">
-                  IT (Systemtechnik) HTL Krems, Standort Zwettl
-                </p>
-              </a>
-            </article>
-            <article class="timeline__item">
-              <a
-                class="timeline__box timeline__link"
-                href="timeline-zivildienst.html"
-              >
-                <h3>Seit 2025</h3>
-                <p class="timeline__subtitle">Zivildienst beim Roten Kreuz</p>
-              </a>
-            </article>
-          </div>
+        <div class="timeline__items">
+          <article class="timeline__item">
+            <a
+              class="timeline__box timeline__link"
+              href="timeline-volksschule.html"
+            >
+              <h3>2012 – 2016</h3>
+              <p class="timeline__subtitle">Volksschule Pfaffenschlag</p>
+            </a>
+          </article>
+          <article class="timeline__item">
+            <a class="timeline__box timeline__link" href="timeline-nms.html">
+              <h3>2016 – 2020</h3>
+              <p class="timeline__subtitle">
+                NMS Waidhofen a. d. Thaya (Kreativ)
+              </p>
+            </a>
+          </article>
+          <article class="timeline__item">
+            <a
+              class="timeline__box timeline__link"
+              href="timeline-htl-krems.html"
+            >
+              <h3>2020 – 2025</h3>
+              <p class="timeline__subtitle">
+                IT (Systemtechnik) HTL Krems, Standort Zwettl
+              </p>
+            </a>
+          </article>
+          <article class="timeline__item">
+            <a
+              class="timeline__box timeline__link"
+              href="timeline-zivildienst.html"
+            >
+              <h3>Seit 2025</h3>
+              <p class="timeline__subtitle">Zivildienst beim Roten Kreuz</p>
+            </a>
+          </article>
         </div>
       </section>
 
@@ -136,117 +133,37 @@
 
       <section class="special-interests">
         <h2>Special Interests</h2>
-        <div class="bubble-chart" role="list">
+        <div
+          class="special-interests__filters"
+          role="toolbar"
+          aria-label="Interessen filtern"
+        >
           <button
-            class="bubble"
             type="button"
-            role="listitem"
-            data-interest
-            data-label="BMW"
-            data-description="Leidenschaft für präzise Ingenieurskunst, Motorsport und Fahrdynamik."
-            style="--x: 20%; --y: 30%; --size: 11rem"
+            class="filter-button is-active"
+            data-filter="all"
           >
-            BMW
+            Alle
           </button>
-          <button
-            class="bubble"
-            type="button"
-            role="listitem"
-            data-interest
-            data-label="Kunst"
-            data-description="Besuche von Galerien und eigenes Skizzieren zur Entspannung."
-            style="--x: 45%; --y: 18%; --size: 8.5rem"
-          >
-            Kunst
+          <button type="button" class="filter-button" data-filter="creative">
+            Creative
           </button>
-          <button
-            class="bubble"
-            type="button"
-            role="listitem"
-            data-interest
-            data-label="Rubik's Cube"
-            data-description="Speedcubing als mentales Training für Mustererkennung und Geduld."
-            style="--x: 72%; --y: 28%; --size: 9.5rem"
-          >
-            Rubik's Cube
+          <button type="button" class="filter-button" data-filter="mind">
+            Mind
           </button>
-          <button
-            class="bubble"
-            type="button"
-            role="listitem"
-            data-interest
-            data-label="Video Games"
-            data-description="Strategie- und Simulationsspiele als Sandbox für Teamwork und Kreativität."
-            style="--x: 27%; --y: 62%; --size: 10rem"
-          >
-            Video Games
+          <button type="button" class="filter-button" data-filter="tech">
+            Tech
           </button>
-          <button
-            class="bubble"
-            type="button"
-            role="listitem"
-            data-interest
-            data-label="Video Editing"
-            data-description="Experimentiere mit Schnitt, Sounddesign und Motion Graphics."
-            style="--x: 55%; --y: 58%; --size: 8.75rem"
-          >
-            Video Editing
-          </button>
-          <button
-            class="bubble"
-            type="button"
-            role="listitem"
-            data-interest
-            data-label="Picture Editing"
-            data-description="Bildkomposition und Farblooks in Lightroom und Photoshop."
-            style="--x: 82%; --y: 63%; --size: 7.5rem"
-          >
-            Picture Editing
-          </button>
-          <button
-            class="bubble"
-            type="button"
-            role="listitem"
-            data-interest
-            data-label="Mentality"
-            data-description="Mindset-Training, Journaling und kontinuierliche Reflexion."
-            style="--x: 15%; --y: 78%; --size: 7.8rem"
-          >
-            Mentality
-          </button>
-          <button
-            class="bubble"
-            type="button"
-            role="listitem"
-            data-interest
-            data-label="Philosophy"
-            data-description="Diskussionen über Ethik, Logik und die großen Fragen."
-            style="--x: 40%; --y: 78%; --size: 9rem"
-          >
-            Philosophy
-          </button>
-          <button
-            class="bubble"
-            type="button"
-            role="listitem"
-            data-interest
-            data-label="Neurobiology"
-            data-description="Neugier auf neuronale Netzwerke und kognitive Prozesse."
-            style="--x: 65%; --y: 82%; --size: 8.25rem"
-          >
-            Neurobiology
-          </button>
-          <button
-            class="bubble"
-            type="button"
-            role="listitem"
-            data-interest
-            data-label="Jordan Peterson"
-            data-description="Analyse seiner Vorträge zu Verantwortung, Ordnung und persönlichem Wachstum."
-            style="--x: 88%; --y: 82%; --size: 7rem"
-          >
-            Jordan Peterson
-          </button>
+        </div>
+        <div class="special-interests__chart-wrapper">
+          <div class="bubble-chart" data-bubble-chart>
+            <svg
+              class="bubble-chart__edges"
+              data-edges
+              aria-hidden="true"
+              focusable="false"
+            ></svg>
+          </div>
         </div>
         <div class="bubble-detail" aria-live="polite">
           <h3 class="bubble-detail__title" data-interest-label>
@@ -361,6 +278,30 @@
             <p>
               Dashboard für lokale Meet-Ups mit Echtzeit-Anmeldung und
               Feedback-Widgets.
+            </p>
+            <span class="project-card__cta">Details ansehen</span>
+          </a>
+          <a class="project-card" href="project7.html">
+            <h3>Projekt 7 &ndash; Automation Toolkit</h3>
+            <p>
+              Sammlung an Skripten, die wiederkehrende Aufgaben in Schule und
+              Verein automatisiert.
+            </p>
+            <span class="project-card__cta">Details ansehen</span>
+          </a>
+          <a class="project-card" href="project8.html">
+            <h3>Projekt 8 &ndash; Mentoring Portal</h3>
+            <p>
+              Plattform-Konzept, um Wissen aus Praktika in kleinen Lernpfaden zu
+              teilen.
+            </p>
+            <span class="project-card__cta">Details ansehen</span>
+          </a>
+          <a class="project-card" href="project9.html">
+            <h3>Projekt 9 &ndash; Creative Suite Presets</h3>
+            <p>
+              Paket an Farb-LUTs und Workflow-Vorlagen für Foto- und
+              Videoprojekte.
             </p>
             <span class="project-card__cta">Details ansehen</span>
           </a>
