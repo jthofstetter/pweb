@@ -1,1 +1,375 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Persönliche One-Page-Website</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="intro">
+        <div class="intro__content">
+          <div class="intro__info">
+            <h1>Jannik Hofstetter</h1>
+            <p class="intro__birth">17.10.2005</p>
+          </div>
+          <div class="intro__portrait">
+            <div class="portrait-placeholder">Picture of me</div>
+          </div>
+        </div>
+        <div class="intro__quote">
+          <blockquote class="quote-rotator" aria-live="polite">
+            <span class="quote-rotator__text" data-quote
+              >Only what grows in silence can rise without breaking.</span
+            >
+          </blockquote>
+        </div>
+      </section>
 
+      <section class="timeline">
+        <h2>Timeline</h2>
+        <div class="timeline__wrapper">
+          <div class="timeline__line"></div>
+          <div class="timeline__items">
+            <article class="timeline__item">
+              <a
+                class="timeline__box timeline__link"
+                href="timeline-volksschule.html"
+              >
+                <h3>2012 – 2016</h3>
+                <p class="timeline__subtitle">Volksschule Pfaffenschlag</p>
+              </a>
+            </article>
+            <article class="timeline__item">
+              <a class="timeline__box timeline__link" href="timeline-nms.html">
+                <h3>2016 – 2020</h3>
+                <p class="timeline__subtitle">
+                  NMS Waidhofen a. d. Thaya (Kreativ)
+                </p>
+              </a>
+            </article>
+            <article class="timeline__item">
+              <a
+                class="timeline__box timeline__link"
+                href="timeline-htl-krems.html"
+              >
+                <h3>2020 – 2025</h3>
+                <p class="timeline__subtitle">
+                  IT (Systemtechnik) HTL Krems, Standort Zwettl
+                </p>
+              </a>
+            </article>
+            <article class="timeline__item">
+              <a
+                class="timeline__box timeline__link"
+                href="timeline-zivildienst.html"
+              >
+                <h3>Seit 2025</h3>
+                <p class="timeline__subtitle">Zivildienst beim Roten Kreuz</p>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills">
+        <h2>Skills</h2>
+        <div class="skills__languages">
+          <div class="language-card language-card--english">
+            <div class="flag"></div>
+            <div class="language-card__label">
+              <p>English</p>
+              <span>B2</span>
+            </div>
+          </div>
+          <div class="language-card language-card--german">
+            <div class="flag"></div>
+            <div class="language-card__label">
+              <p>Deutsch</p>
+              <span>Muttersprache</span>
+            </div>
+          </div>
+          <div class="language-card language-card--russian">
+            <div class="flag"></div>
+            <div class="language-card__label">
+              <p>Русский</p>
+              <span>A1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills__coding">
+          <div class="skill">
+            <span>C#</span>
+            <div class="skill__bar">
+              <span style="width: 90%"></span>
+            </div>
+          </div>
+          <div class="skill">
+            <span>Python</span>
+            <div class="skill__bar">
+              <span style="width: 75%"></span>
+            </div>
+          </div>
+          <div class="skill">
+            <span>C</span>
+            <div class="skill__bar">
+              <span style="width: 40%"></span>
+            </div>
+          </div>
+          <div class="skill">
+            <span>Kotlin</span>
+            <div class="skill__bar">
+              <span style="width: 80%"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="special-interests">
+        <h2>Special Interests</h2>
+        <div class="bubble-chart" role="list">
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="BMW"
+            data-description="Leidenschaft für präzise Ingenieurskunst, Motorsport und Fahrdynamik."
+            style="--x: 20%; --y: 30%; --size: 11rem"
+          >
+            BMW
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Kunst"
+            data-description="Besuche von Galerien und eigenes Skizzieren zur Entspannung."
+            style="--x: 45%; --y: 18%; --size: 8.5rem"
+          >
+            Kunst
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Rubik's Cube"
+            data-description="Speedcubing als mentales Training für Mustererkennung und Geduld."
+            style="--x: 72%; --y: 28%; --size: 9.5rem"
+          >
+            Rubik's Cube
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Video Games"
+            data-description="Strategie- und Simulationsspiele als Sandbox für Teamwork und Kreativität."
+            style="--x: 27%; --y: 62%; --size: 10rem"
+          >
+            Video Games
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Video Editing"
+            data-description="Experimentiere mit Schnitt, Sounddesign und Motion Graphics."
+            style="--x: 55%; --y: 58%; --size: 8.75rem"
+          >
+            Video Editing
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Picture Editing"
+            data-description="Bildkomposition und Farblooks in Lightroom und Photoshop."
+            style="--x: 82%; --y: 63%; --size: 7.5rem"
+          >
+            Picture Editing
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Mentality"
+            data-description="Mindset-Training, Journaling und kontinuierliche Reflexion."
+            style="--x: 15%; --y: 78%; --size: 7.8rem"
+          >
+            Mentality
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Philosophy"
+            data-description="Diskussionen über Ethik, Logik und die großen Fragen."
+            style="--x: 40%; --y: 78%; --size: 9rem"
+          >
+            Philosophy
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Neurobiology"
+            data-description="Neugier auf neuronale Netzwerke und kognitive Prozesse."
+            style="--x: 65%; --y: 82%; --size: 8.25rem"
+          >
+            Neurobiology
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Jordan Peterson"
+            data-description="Analyse seiner Vorträge zu Verantwortung, Ordnung und persönlichem Wachstum."
+            style="--x: 88%; --y: 82%; --size: 7rem"
+          >
+            Jordan Peterson
+          </button>
+        </div>
+        <div class="bubble-detail" aria-live="polite">
+          <h3 class="bubble-detail__title" data-interest-label>
+            Special Interests
+          </h3>
+          <p class="bubble-detail__description" data-interest-description>
+            Tippe oder klicke auf eine Blase, um mehr über meine Interessen zu
+            erfahren.
+          </p>
+        </div>
+      </section>
+
+      <section class="hobbies">
+        <h2>Hobbies</h2>
+        <div class="hobby">
+          <div class="hobby__text">
+            <h3>Boxing</h3>
+            <p>
+              Regelmäßiges Training im Verein – Fokus auf Technik, Ausdauer und
+              Disziplin im Ring.
+            </p>
+          </div>
+          <div class="hobby__image">Bildplatzhalter</div>
+        </div>
+        <div class="hobby">
+          <div class="hobby__text">
+            <h3>Football</h3>
+            <p>
+              Wochenendspiele mit dem lokalen Team und Analysen klassischer
+              Spiele zur Verbesserung der Taktik.
+            </p>
+          </div>
+          <div class="hobby__image">Bildplatzhalter</div>
+        </div>
+        <div class="hobby">
+          <div class="hobby__text">
+            <h3>Lift Weights</h3>
+            <p>
+              Krafttraining im Studio mit Progressionsplänen zur
+              kontinuierlichen Leistungssteigerung.
+            </p>
+          </div>
+          <div class="hobby__image">Bildplatzhalter</div>
+        </div>
+        <div class="hobby">
+          <div class="hobby__text">
+            <h3>Car Driving</h3>
+            <p>
+              Ausfahrten am Wochenende, inklusive Teilnahme an
+              Fahrsicherheits-Trainings.
+            </p>
+          </div>
+          <div class="hobby__image">Bildplatzhalter</div>
+        </div>
+        <div class="hobby">
+          <div class="hobby__text">
+            <h3>Meet-Ups</h3>
+            <p>
+              Organisation von Technik-Meetups und Austausch mit Gleichgesinnten
+              zu aktuellen Trends.
+            </p>
+          </div>
+          <div class="hobby__image">Bildplatzhalter</div>
+        </div>
+      </section>
+
+      <section class="projects">
+        <h2>Projects</h2>
+        <div class="projects__grid">
+          <a class="project-card" href="project1.html">
+            <h3>Projekt 1 &ndash; Netzwerkmonitor</h3>
+            <p>
+              Ein kleines Tool zur Überwachung meines Heimnetzwerks mit
+              Live-Statusanzeigen.
+            </p>
+            <span class="project-card__cta">Details ansehen</span>
+          </a>
+          <a class="project-card" href="project2.html">
+            <h3>Projekt 2 &ndash; Portfolio CMS</h3>
+            <p>
+              Ein statisches CMS, mit dem ich Inhalte meiner Seite schneller
+              aktualisieren kann.
+            </p>
+            <span class="project-card__cta">Details ansehen</span>
+          </a>
+          <a class="project-card" href="project3.html">
+            <h3>Projekt 3 &ndash; Rescue Planner</h3>
+            <p>
+              Eine Planungsapp zur Koordination von Bereitschaftsdiensten beim
+              Roten Kreuz.
+            </p>
+            <span class="project-card__cta">Details ansehen</span>
+          </a>
+          <a class="project-card" href="project4.html">
+            <h3>Projekt 4 &ndash; Smart Garage</h3>
+            <p>
+              IoT-Steuerung für das Elternhaus mit Sensoren für Temperatur und
+              Sicherheit.
+            </p>
+            <span class="project-card__cta">Details ansehen</span>
+          </a>
+          <a class="project-card" href="project5.html">
+            <h3>Projekt 5 &ndash; Study Coach Bot</h3>
+            <p>
+              Ein Chatbot, der Lernpläne erstellt und Erinnerungen für Klausuren
+              verschickt.
+            </p>
+            <span class="project-card__cta">Details ansehen</span>
+          </a>
+          <a class="project-card" href="project6.html">
+            <h3>Projekt 6 &ndash; Event Dashboard</h3>
+            <p>
+              Dashboard für lokale Meet-Ups mit Echtzeit-Anmeldung und
+              Feedback-Widgets.
+            </p>
+            <span class="project-card__cta">Details ansehen</span>
+          </a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>© 2025 – Personal Website by Jannik Hofstetter</p>
+      </footer>
+    </main>
+  </body>
+</html>
