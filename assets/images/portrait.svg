@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d1d24" />
+      <stop offset="70%" stop-color="#0c0c10" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.8" cy="0.2" r="0.6">
+      <stop offset="0%" stop-color="#c8a15b" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#c8a15b" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#202025" />
+      <stop offset="100%" stop-color="#151519" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#bg)" />
+  <rect width="300" height="400" fill="url(#glow)" />
+  <circle cx="150" cy="150" r="90" fill="#f1d4a5" opacity="0.18" />
+  <path d="M150 85c-32 0-58 26-58 58 0 33 22 57 54 57s62-24 62-59c0-31-26-56-58-56z" fill="#efcc94" />
+  <path d="M150 82c-26 0-47 18-47 42 0 6 1 13 3 19 7-1 17-4 26-10 11-8 19-18 22-29 3 11 11 21 22 29 9 6 19 9 26 10 2-6 3-13 3-19 0-24-21-42-47-42z" fill="#202028" />
+  <path d="M103 219c0 37 21 72 47 72s47-35 47-72c0-30-21-52-47-52s-47 22-47 52z" fill="#f0d4a7" />
+  <path d="M90 300c15-25 35-38 60-38s45 13 60 38l-5 44H95z" fill="url(#shirt)" />
+  <text x="150" y="360" fill="#c8a15b" font-family="'Bebas Neue', sans-serif" font-size="52" text-anchor="middle" letter-spacing="6">JH</text>
+</svg>

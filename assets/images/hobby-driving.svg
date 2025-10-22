@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <defs>
+    <linearGradient id="road" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16161c" />
+      <stop offset="100%" stop-color="#09090d" />
+    </linearGradient>
+    <linearGradient id="car" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8a15b" />
+      <stop offset="100%" stop-color="#7a5a2b" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="24" fill="url(#road)" />
+  <path d="M32 144h256" stroke="#c8a15b" stroke-width="4" stroke-linecap="round" opacity="0.35" />
+  <path d="M60 120h200" stroke="#c8a15b" stroke-width="2" stroke-dasharray="16 18" opacity="0.4" />
+  <path d="M90 112c0-16 26-44 70-44h0c44 0 70 28 70 44l18 32h-176z" fill="url(#car)" />
+  <path d="M112 112c0-10 22-30 48-30s48 20 48 30l10 16h-116z" fill="#14141b" opacity="0.85" />
+  <circle cx="126" cy="152" r="20" fill="#0b0b11" stroke="#c8a15b" stroke-width="4" />
+  <circle cx="206" cy="152" r="20" fill="#0b0b11" stroke="#c8a15b" stroke-width="4" />
+  <path d="M140 88h40" stroke="#ffe3b0" stroke-width="4" stroke-linecap="round" opacity="0.6" />
+  <path d="M186 104h32" stroke="#c8a15b" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+  <path d="M70 70c30-20 70-30 110-26" stroke="#c8a15b" stroke-width="3" stroke-linecap="round" opacity="0.25" />
+</svg>

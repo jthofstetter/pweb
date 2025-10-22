@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <defs>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d1d24" />
+      <stop offset="100%" stop-color="#0c0c11" />
+    </linearGradient>
+    <linearGradient id="gloves" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8a15b" />
+      <stop offset="100%" stop-color="#8c6b34" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="24" fill="url(#ring)" />
+  <rect x="30" y="150" width="260" height="12" rx="6" fill="#c8a15b" opacity="0.6" />
+  <path d="M140 60c-18 0-32 20-32 40 0 20 14 36 32 36 6 0 14-2 18-7l10 10 34-34-10-10c5-7 7-15 7-23 0-22-16-36-32-36-8 0-17 4-23 10-6-6-14-10-22-10z" fill="url(#gloves)" opacity="0.92" />
+  <path d="M132 68c-14 0-24 12-24 30 0 14 6 26 18 26 8 0 15-6 19-12l12 12 26-26-12-12c4-8 4-18-1-24-5-6-10-8-16-8-6 0-12 4-18 10-4-4-10-6-14-6z" fill="#1d1d24" opacity="0.45" />
+  <circle cx="228" cy="72" r="12" fill="#c8a15b" opacity="0.65" />
+</svg>

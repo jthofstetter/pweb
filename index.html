@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jannik Hofstetter · Personal Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="page">
+        <header class="section hero" data-animate>
+            <div class="hero__grid">
+                <div class="hero__details">
+                    <p class="hero__label">Jannik Hofstetter</p>
+                    <p class="hero__dob">17. Oktober 2005</p>
+                </div>
+                <div class="hero__portrait">
+                    <div class="portrait-frame">
+                        <img src="assets/images/portrait.svg" alt="Porträt von Jannik Hofstetter" />
+                    </div>
+                    <p class="hero__quote">„No shortcuts. Only the path.“</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="section timeline" data-animate>
+            <h2 class="section__title">Stationen</h2>
+            <div class="timeline__line"></div>
+            <div class="timeline__items">
+                <article class="timeline__item">
+                    <div class="timeline__dot"></div>
+                    <div class="timeline__card">
+                        <p class="timeline__year">2019 – 2023</p>
+                        <h3 class="timeline__heading">HTL St. Pölten</h3>
+                        <p class="timeline__text">Vertiefung in Informationstechnologie mit Fokus auf Softwareentwicklung und Systemdesign.</p>
+                    </div>
+                </article>
+                <article class="timeline__item">
+                    <div class="timeline__dot"></div>
+                    <div class="timeline__card">
+                        <p class="timeline__year">2023 – 2024</p>
+                        <h3 class="timeline__heading">Diplomarbeit</h3>
+                        <p class="timeline__text">Entwicklung eines intelligenten Assistenzsystems, das Datenanalyse und UI-Design verbindet.</p>
+                    </div>
+                </article>
+                <article class="timeline__item">
+                    <div class="timeline__dot"></div>
+                    <div class="timeline__card">
+                        <p class="timeline__year">2024 – 2025</p>
+                        <h3 class="timeline__heading">Zivildienst</h3>
+                        <p class="timeline__text">Gemeinschaftsdienst im Gesundheitsbereich – Organisation, Empathie und Verantwortung im Alltag.</p>
+                    </div>
+                </article>
+                <article class="timeline__item">
+                    <div class="timeline__dot"></div>
+                    <div class="timeline__card">
+                        <p class="timeline__year">ab 2025</p>
+                        <h3 class="timeline__heading">Masterziel</h3>
+                        <p class="timeline__text">Masterstudium im Bereich Data Science &amp; AI – Brücke zwischen Technik und menschlicher Erfahrung.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section skills" data-animate>
+            <h2 class="section__title">Skills</h2>
+            <div class="skills__grid">
+                <div class="skills__languages">
+                    <h3 class="skills__subtitle">Sprachen</h3>
+                    <div class="language-list">
+                        <div class="language-card">
+                            <span class="language-card__flag" role="img" aria-label="UK flag">🇬🇧</span>
+                            <p class="language-card__name">English</p>
+                            <div class="progress">
+                                <span style="width: 85%"></span>
+                            </div>
+                        </div>
+                        <div class="language-card">
+                            <span class="language-card__flag" role="img" aria-label="German flag">🇩🇪</span>
+                            <p class="language-card__name">Deutsch</p>
+                            <div class="progress">
+                                <span style="width: 100%"></span>
+                            </div>
+                        </div>
+                        <div class="language-card">
+                            <span class="language-card__flag" role="img" aria-label="Russian flag">🇷🇺</span>
+                            <p class="language-card__name">Русский</p>
+                            <div class="progress">
+                                <span style="width: 60%"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills__tech">
+                    <h3 class="skills__subtitle">Tech Stack</h3>
+                    <ul class="tech-list">
+                        <li class="tech-list__item">
+                            <p>C#</p>
+                            <div class="progress">
+                                <span style="width: 90%"></span>
+                            </div>
+                        </li>
+                        <li class="tech-list__item">
+                            <p>Python</p>
+                            <div class="progress">
+                                <span style="width: 80%"></span>
+                            </div>
+                        </li>
+                        <li class="tech-list__item">
+                            <p>C</p>
+                            <div class="progress">
+                                <span style="width: 70%"></span>
+                            </div>
+                        </li>
+                        <li class="tech-list__item">
+                            <p>Kotlin</p>
+                            <div class="progress">
+                                <span style="width: 65%"></span>
+                            </div>
+                        </li>
+                        <li class="tech-list__item">
+                            <p>SQL</p>
+                            <div class="progress">
+                                <span style="width: 75%"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section hobbies" data-animate>
+            <h2 class="section__title">Hobbies</h2>
+            <div class="hobby-list">
+                <article class="hobby-card">
+                    <div class="hobby-card__text">
+                        <h3>Boxing 🥊</h3>
+                        <p>Timing, Disziplin und Fokus – Boxen erinnert mich täglich daran, hart zu arbeiten und ruhig zu bleiben.</p>
+                    </div>
+                    <div class="hobby-card__image">
+                        <img src="assets/images/hobby-boxing.svg" alt="Boxing gloves" />
+                    </div>
+                </article>
+                <article class="hobby-card">
+                    <div class="hobby-card__text">
+                        <h3>Football ⚽</h3>
+                        <p>Teamgeist und Kreativität in Bewegung. Fußball verbindet Strategie mit Adrenalin.</p>
+                    </div>
+                    <div class="hobby-card__image">
+                        <img src="assets/images/hobby-football.svg" alt="Football field" />
+                    </div>
+                </article>
+                <article class="hobby-card">
+                    <div class="hobby-card__text">
+                        <h3>Lift Weights 🏋️</h3>
+                        <p>Struktur und konsequente Routine – Krafttraining ist mein Gegenpol zum digitalen Alltag.</p>
+                    </div>
+                    <div class="hobby-card__image">
+                        <img src="assets/images/hobby-weights.svg" alt="Weights" />
+                    </div>
+                </article>
+                <article class="hobby-card">
+                    <div class="hobby-card__text">
+                        <h3>Car Driving 🚗</h3>
+                        <p>Freie Straßen, klare Gedanken. Autofahren gibt mir Raum für neue Ideen.</p>
+                    </div>
+                    <div class="hobby-card__image">
+                        <img src="assets/images/hobby-driving.svg" alt="Car silhouette" />
+                    </div>
+                </article>
+                <article class="hobby-card">
+                    <div class="hobby-card__text">
+                        <h3>Meet-Ups 🤝</h3>
+                        <p>Menschen, Perspektiven, Austausch. Ich liebe es, neue Impulse in inspirierenden Gesprächen zu finden.</p>
+                    </div>
+                    <div class="hobby-card__image">
+                        <img src="assets/images/hobby-social.svg" alt="Social gathering" />
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2025 · Jannik Hofstetter · Personal Page</p>
+        </footer>
+    </div>
+</body>
+</html>
