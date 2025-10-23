@@ -215,86 +215,65 @@ section h2 {
 }
 
 .skills__languages {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-auto-flow: column;
   justify-content: center;
-  gap: 2rem;
+  align-items: end;
+  gap: clamp(1.5rem, 4vw, 3rem);
   margin-bottom: 3rem;
 }
 
-.language-card {
-  width: clamp(180px, 26vw, 260px);
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.55));
-  border: none;
-  border-radius: 1.5rem;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
-  padding: 1.75rem 1.5rem;
-  text-align: center;
+.podium__column {
+  --podium-height: 7.5rem;
+  width: clamp(160px, 24vw, 220px);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  color: var(--accent);
 }
 
-.language-card::after {
+.podium__column--first {
+  --podium-height: 9.5rem;
+}
+
+.podium__column--second {
+  --podium-height: 8.25rem;
+}
+
+.podium__column--third {
+  --podium-height: 6.5rem;
+}
+
+.podium__flag {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 1.25rem 1.25rem 0 0;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  position: relative;
+}
+
+.podium__flag::after {
   content: "";
   position: absolute;
-  inset: -30% -45% 5% -45%;
-  background: linear-gradient(110deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
-  transform: translateX(-30%);
-  transition: transform 0.6s ease;
-  pointer-events: none;
-  opacity: 0.55;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0));
 }
 
-.language-card:hover,
-.language-card:focus-within {
-  transform: translateY(-12px);
-  box-shadow: 0 32px 60px rgba(0, 0, 0, 0.2);
+.podium__flag--usa {
+  background:
+    repeating-linear-gradient(
+      180deg,
+      #b22234 0%,
+      #b22234 7.69%,
+      #ffffff 7.69%,
+      #ffffff 15.38%
+    );
 }
 
-.language-card:hover::after,
-.language-card:focus-within::after {
-  transform: translateX(25%);
-}
-
-.language-card__label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  align-items: center;
-  font-weight: 600;
-}
-
-.language-card__label span {
-  font-size: 0.9rem;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-.language-card .flag {
-  width: 100%;
-  height: 120px;
-  border: 1px solid var(--timeline-line);
-  position: relative;
-  overflow: hidden;
-}
-
-.language-card--english .flag {
-  background: repeating-linear-gradient(
-    180deg,
-    #b22234 0%,
-    #b22234 7.69%,
-    #ffffff 7.69%,
-    #ffffff 15.38%
-  );
-}
-
-.language-card--english .flag::before {
+.podium__flag--usa::before {
   content: "";
   position: absolute;
   top: 0;
@@ -302,34 +281,93 @@ section h2 {
   width: 45%;
   height: 53%;
   background:
-    radial-gradient(circle at 10% 15%, #ffffff 2px, transparent 2px),
-    radial-gradient(circle at 30% 15%, #ffffff 2px, transparent 2px),
-    radial-gradient(circle at 50% 15%, #ffffff 2px, transparent 2px),
-    radial-gradient(circle at 20% 35%, #ffffff 2px, transparent 2px),
-    radial-gradient(circle at 40% 35%, #ffffff 2px, transparent 2px),
-    radial-gradient(circle at 60% 35%, #ffffff 2px, transparent 2px), #3c3b6e;
-  background-size: 20% 25%;
+    radial-gradient(circle at 12% 18%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 32% 18%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 52% 18%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 22% 38%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 42% 38%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 62% 38%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 12% 58%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 32% 58%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 52% 58%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 22% 78%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 42% 78%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 62% 78%, #ffffff 2px, transparent 2px),
+    #3c3b6e;
+  background-size: 20% 22%;
   background-repeat: repeat;
 }
 
-.language-card--german .flag {
+.podium__flag--austria {
   background: linear-gradient(
     180deg,
+    #ed2939 0%,
     #ed2939 33.33%,
     #ffffff 33.33%,
     #ffffff 66.66%,
-    #ed2939 66.66%
+    #ed2939 66.66%,
+    #ed2939 100%
   );
 }
 
-.language-card--russian .flag {
+.podium__flag--russia {
   background: linear-gradient(
     180deg,
+    #ffffff 0%,
     #ffffff 33.33%,
-    #0033a0 33.33%,
-    #0033a0 66.66%,
-    #d52b1e 66.66%
+    #0039a6 33.33%,
+    #0039a6 66.66%,
+    #d52b1e 66.66%,
+    #d52b1e 100%
   );
+}
+
+.podium__base {
+  width: 100%;
+  min-height: var(--podium-height);
+  padding: 1.5rem 1rem 1.75rem;
+  border-radius: 0 0 1.35rem 1.35rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(227, 227, 227, 0.85));
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.45), 0 25px 45px rgba(0, 0, 0, 0.18);
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+}
+
+.podium__language {
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+}
+
+.podium__level {
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+}
+
+@media (max-width: 768px) {
+  .skills__languages {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .podium__column {
+    align-items: stretch;
+  }
+
+  .podium__flag,
+  .podium__base {
+    border-radius: 1.25rem;
+  }
+
+  .podium__flag {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  }
+
+  .podium__base {
+    min-height: auto;
+  }
 }
 
 .skills__coding {
@@ -453,8 +491,8 @@ section h2 {
 
 .bubble {
   position: absolute;
-  top: var(--y);
-  left: var(--x);
+  top: clamp(12%, var(--y), 88%);
+  left: clamp(12%, var(--x), 88%);
   transform: translate(-50%, -50%);
   width: var(--size);
   height: var(--size);
@@ -556,6 +594,38 @@ section h2 {
 @media (prefers-reduced-motion: reduce) {
   .bubble {
     animation: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .bubble-chart {
+    height: auto;
+    min-height: 0;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .bubble {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .bubble:hover,
+  .bubble:focus-visible {
+    transform: scale(1.05);
+  }
+
+  .bubble:hover::after,
+  .bubble:focus-visible::after {
+    transform: translateX(0) rotate(12deg);
   }
 }
 
