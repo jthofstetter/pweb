@@ -217,7 +217,6 @@ section h2 {
 .skills__languages {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: clamp(160px, 22vw, 220px);
   justify-content: center;
   align-items: end;
   gap: clamp(1.5rem, 4vw, 3rem);
@@ -226,12 +225,11 @@ section h2 {
 
 .podium__column {
   --podium-height: 7.5rem;
-  width: 100%;
-  display: grid;
-  grid-template-rows: auto var(--podium-height);
-  align-items: end;
-  justify-items: center;
-  row-gap: 0.85rem;
+  width: clamp(160px, 24vw, 220px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   text-align: center;
   color: var(--accent);
 }
@@ -326,34 +324,14 @@ section h2 {
 
 .podium__base {
   width: 100%;
-  height: 100%;
+  min-height: var(--podium-height);
   padding: 1.5rem 1rem 1.75rem;
   border-radius: 0 0 1.35rem 1.35rem;
-  background: linear-gradient(180deg, #ffffff 0%, #f1f1f1 45%, #d6d6d6 100%);
-  border: 1px solid rgba(31, 31, 31, 0.08);
-  box-shadow:
-    inset 0 4px 10px rgba(255, 255, 255, 0.6),
-    inset 0 -6px 14px rgba(0, 0, 0, 0.12),
-    0 22px 42px rgba(0, 0, 0, 0.18);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.45rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.podium__base::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 12%;
-  right: 12%;
-  height: 8px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(0, 0, 0, 0.05));
-  border-radius: 0 0 999px 999px;
-  opacity: 0.75;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(227, 227, 227, 0.85));
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.45), 0 25px 45px rgba(0, 0, 0, 0.18);
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
 }
 
 .podium__language {
@@ -372,12 +350,10 @@ section h2 {
   .skills__languages {
     grid-auto-flow: row;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    justify-items: center;
   }
 
   .podium__column {
-    width: 100%;
-    grid-template-rows: auto 1fr;
+    align-items: stretch;
   }
 
   .podium__flag,
@@ -390,8 +366,7 @@ section h2 {
   }
 
   .podium__base {
-    height: auto;
-    padding: 1.25rem;
+    min-height: auto;
   }
 }
 
@@ -516,8 +491,8 @@ section h2 {
 
 .bubble {
   position: absolute;
-  top: var(--y);
-  left: var(--x);
+  top: clamp(12%, var(--y), 88%);
+  left: clamp(12%, var(--x), 88%);
   transform: translate(-50%, -50%);
   width: var(--size);
   height: var(--size);
