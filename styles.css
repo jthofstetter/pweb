@@ -142,28 +142,6 @@ section h2 {
   padding-left: 3.5rem;
 }
 
-.has-js .timeline__item {
-  opacity: 0;
-  transform: translate3d(0, 44px, 0);
-  transition:
-    opacity 0.6s ease,
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: calc(var(--timeline-index, 0) * 0.12s);
-}
-
-.has-js .timeline__item:nth-child(odd) {
-  transform: translate3d(-36px, 44px, 0);
-}
-
-.has-js .timeline__item:nth-child(even) {
-  transform: translate3d(36px, 44px, 0);
-}
-
-.has-js .timeline__item.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
 .timeline__item::before {
   content: "";
   position: absolute;
@@ -222,14 +200,6 @@ section h2 {
 .timeline__link:hover::after,
 .timeline__link:focus-visible::after {
   transform: translateX(30%);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .has-js .timeline__item {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 }
 
 .timeline__link h3 {
