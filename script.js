@@ -1,5 +1,3 @@
-document.documentElement.classList.add("has-js");
-
 const quotes = [
   "Only what grows in silence can rise without breaking.",
   "I've been building systems for years — but the most complex one was myself.",
