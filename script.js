@@ -66,7 +66,11 @@ if (quoteElement) {
 const bubbleButtons = document.querySelectorAll("[data-interest]");
 const bubbleLabel = document.querySelector("[data-interest-label]");
 const bubbleDescription = document.querySelector("[data-interest-description]");
+const bubbleChart = document.querySelector(".bubble-chart");
+const bubbleLayoutQuery = window.matchMedia("(max-width: 720px)");
+const bubbleSafeInset = 18;
 let activeBubble = null;
+let pendingLayoutFrame = null;
 
 function updateBubbleDetail(button) {
   if (!bubbleLabel || !bubbleDescription) return;
@@ -87,6 +91,101 @@ function updateBubbleDetail(button) {
     description ?? "Mehr zu diesem Schwerpunkt folgt in Kürze.";
 }
 
+function parsePercentage(value) {
+  const parsed = parseFloat(value);
+  return Number.isFinite(parsed) ? parsed : 50;
+}
+
+function sizeToPixels(value, rootFontSize) {
+  if (!value) {
+    return rootFontSize * 8;
+  }
+
+  const trimmed = value.trim();
+  const numeric = parseFloat(trimmed);
+
+  if (!Number.isFinite(numeric)) {
+    return rootFontSize * 8;
+  }
+
+  if (trimmed.endsWith("rem")) {
+    return numeric * rootFontSize;
+  }
+
+  return numeric;
+}
+
+function layoutBubbles() {
+  if (!bubbleButtons.length || !bubbleChart) {
+    return;
+  }
+
+  if (bubbleLayoutQuery.matches) {
+    bubbleButtons.forEach((button) => {
+      button.style.removeProperty("top");
+      button.style.removeProperty("left");
+      button.style.removeProperty("transform");
+    });
+
+    return;
+  }
+
+  const rootFontSize =
+    parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  const { clientWidth: width, clientHeight: height } = bubbleChart;
+
+  if (!width || !height) {
+    return;
+  }
+
+  bubbleButtons.forEach((button) => {
+    const sizeValue =
+      button.style.getPropertyValue("--size") ||
+      getComputedStyle(button).getPropertyValue("--size");
+    const sizePx = sizeToPixels(sizeValue, rootFontSize);
+    const radius = sizePx / 2;
+
+    const percentX = parsePercentage(button.style.getPropertyValue("--x"));
+    const percentY = parsePercentage(button.style.getPropertyValue("--y"));
+
+    const targetX = (percentX / 100) * width;
+    const targetY = (percentY / 100) * height;
+
+    const safeInset = Math.max(
+      bubbleSafeInset,
+      Math.min(radius * 0.45, bubbleSafeInset + 14),
+    );
+    const minX = radius + safeInset;
+    const maxX = width - radius - safeInset;
+    const minY = radius + safeInset;
+    const maxY = height - radius - safeInset;
+
+    const left =
+      minX > maxX
+        ? width / 2
+        : Math.min(Math.max(minX, targetX), maxX);
+    const top =
+      minY > maxY
+        ? height / 2
+        : Math.min(Math.max(minY, targetY), maxY);
+
+    button.style.left = `${left}px`;
+    button.style.top = `${top}px`;
+    button.style.transform = "translate(-50%, -50%)";
+  });
+}
+
+function scheduleBubbleLayout() {
+  if (pendingLayoutFrame !== null) {
+    cancelAnimationFrame(pendingLayoutFrame);
+  }
+
+  pendingLayoutFrame = requestAnimationFrame(() => {
+    pendingLayoutFrame = null;
+    layoutBubbles();
+  });
+}
+
 if (bubbleButtons.length) {
   bubbleButtons.forEach((button) => {
     button.setAttribute("aria-pressed", "false");
@@ -96,5 +195,64 @@ if (bubbleButtons.length) {
     button.addEventListener("focus", () => updateBubbleDetail(button));
   });
 
+  if (typeof bubbleLayoutQuery.addEventListener === "function") {
+    bubbleLayoutQuery.addEventListener("change", scheduleBubbleLayout);
+  } else if (typeof bubbleLayoutQuery.addListener === "function") {
+    bubbleLayoutQuery.addListener(scheduleBubbleLayout);
+  }
+
+  window.addEventListener("resize", scheduleBubbleLayout);
   updateBubbleDetail(bubbleButtons[0]);
+  scheduleBubbleLayout();
+}
+
+const skillBars = document.querySelectorAll("[data-skill-bar]");
+
+function fillSkillBar(bar) {
+  if (!bar || bar.dataset.animated === "true") {
+    return;
+  }
+
+  const fill = bar.querySelector(".skill__progress");
+
+  if (!fill) {
+    return;
+  }
+
+  const target = parseFloat(bar.dataset.level);
+  const clamped = Number.isFinite(target) ? Math.min(Math.max(target, 0), 100) : 0;
+
+  bar.dataset.animated = "true";
+
+  if (prefersReducedMotion.matches) {
+    fill.style.transition = "none";
+    fill.style.width = `${clamped}%`;
+    bar.classList.add("is-filled");
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    fill.style.width = `${clamped}%`;
+    bar.classList.add("is-filled");
+  });
+}
+
+if (skillBars.length) {
+  if ("IntersectionObserver" in window && !prefersReducedMotion.matches) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            fillSkillBar(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+
+    skillBars.forEach((bar) => observer.observe(bar));
+  } else {
+    skillBars.forEach(fillSkillBar);
+  }
 }

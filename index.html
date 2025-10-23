@@ -82,53 +82,65 @@
 
       <section class="skills">
         <h2>Skills</h2>
-        <div class="skills__languages">
-          <div class="language-card language-card--english">
-            <div class="flag"></div>
-            <div class="language-card__label">
-              <p>English</p>
-              <span>B2</span>
+        <div class="skills__languages" role="list">
+          <article class="podium__column podium__column--second" role="listitem">
+            <div
+              class="podium__flag podium__flag--usa"
+              role="img"
+              aria-label="Flagge der Vereinigten Staaten"
+            ></div>
+            <div class="podium__base">
+              <p class="podium__language">English</p>
+              <span class="podium__level">B2</span>
             </div>
-          </div>
-          <div class="language-card language-card--german">
-            <div class="flag"></div>
-            <div class="language-card__label">
-              <p>Deutsch</p>
-              <span>Muttersprache</span>
+          </article>
+          <article class="podium__column podium__column--first" role="listitem">
+            <div
+              class="podium__flag podium__flag--austria"
+              role="img"
+              aria-label="Flagge von Österreich"
+            ></div>
+            <div class="podium__base">
+              <p class="podium__language">Deutsch</p>
+              <span class="podium__level">Muttersprache</span>
             </div>
-          </div>
-          <div class="language-card language-card--russian">
-            <div class="flag"></div>
-            <div class="language-card__label">
-              <p>Русский</p>
-              <span>A1</span>
+          </article>
+          <article class="podium__column podium__column--third" role="listitem">
+            <div
+              class="podium__flag podium__flag--russia"
+              role="img"
+              aria-label="Flagge von Russland"
+            ></div>
+            <div class="podium__base">
+              <p class="podium__language">Русский</p>
+              <span class="podium__level">A1</span>
             </div>
-          </div>
+          </article>
         </div>
 
         <div class="skills__coding">
           <div class="skill">
             <span>C#</span>
-            <div class="skill__bar">
-              <span style="width: 90%"></span>
+            <div class="skill__bar" data-skill-bar data-level="90">
+              <span class="skill__progress"></span>
             </div>
           </div>
           <div class="skill">
             <span>Python</span>
-            <div class="skill__bar">
-              <span style="width: 75%"></span>
+            <div class="skill__bar" data-skill-bar data-level="75">
+              <span class="skill__progress"></span>
             </div>
           </div>
           <div class="skill">
             <span>C</span>
-            <div class="skill__bar">
-              <span style="width: 40%"></span>
+            <div class="skill__bar" data-skill-bar data-level="40">
+              <span class="skill__progress"></span>
             </div>
           </div>
           <div class="skill">
             <span>Kotlin</span>
-            <div class="skill__bar">
-              <span style="width: 80%"></span>
+            <div class="skill__bar" data-skill-bar data-level="80">
+              <span class="skill__progress"></span>
             </div>
           </div>
         </div>
