@@ -153,15 +153,14 @@ function layoutBubbles() {
     const targetX = (percentX / 100) * width;
     const targetY = (percentY / 100) * height;
 
-    const horizontalInset =
-      bubbleSafeInset + Math.min(radius * 0.5, bubbleSafeInset + 38);
-    const verticalInset =
-      bubbleSafeInset + Math.min(radius * 0.65, bubbleSafeInset + 44);
-
-    const minX = radius + horizontalInset;
-    const maxX = width - radius - horizontalInset;
-    const minY = radius + verticalInset;
-    const maxY = height - radius - verticalInset;
+    const safeInset = Math.max(
+      bubbleSafeInset,
+      Math.min(radius * 0.45, bubbleSafeInset + 14),
+    );
+    const minX = radius + safeInset;
+    const maxX = width - radius - safeInset;
+    const minY = radius + safeInset;
+    const maxY = height - radius - safeInset;
 
     const left =
       minX > maxX
@@ -207,51 +206,6 @@ if (bubbleButtons.length) {
   window.addEventListener("resize", scheduleBubbleLayout);
   updateBubbleDetail(bubbleButtons[0]);
   scheduleBubbleLayout();
-}
-
-const timelineItems = document.querySelectorAll(".timeline__item");
-
-function revealTimelineItems(items) {
-  items.forEach((item) => item.classList.add("is-visible"));
-}
-
-if (timelineItems.length) {
-  timelineItems.forEach((item, index) => {
-    item.style.setProperty("--timeline-index", index);
-  });
-
-  if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
-    revealTimelineItems(timelineItems);
-  } else {
-    const timelineObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
-
-    timelineItems.forEach((item) => timelineObserver.observe(item));
-  }
-
-  const handleTimelineMotionPreference = (event) => {
-    if (event.matches) {
-      revealTimelineItems(timelineItems);
-    }
-  };
-
-  if (typeof prefersReducedMotion.addEventListener === "function") {
-    prefersReducedMotion.addEventListener(
-      "change",
-      handleTimelineMotionPreference,
-    );
-  } else if (typeof prefersReducedMotion.addListener === "function") {
-    prefersReducedMotion.addListener(handleTimelineMotionPreference);
-  }
 }
 
 const skillBars = document.querySelectorAll("[data-skill-bar]");
