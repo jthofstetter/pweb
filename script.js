@@ -256,3 +256,99 @@ if (skillBars.length) {
     skillBars.forEach(fillSkillBar);
   }
 }
+
+const themePreferenceKey = "preferred-theme";
+
+function readStoredTheme() {
+  try {
+    return window.localStorage.getItem(themePreferenceKey);
+  } catch (error) {
+    return null;
+  }
+}
+
+function storeTheme(value) {
+  try {
+    window.localStorage.setItem(themePreferenceKey, value);
+  } catch (error) {
+    /* noop */
+  }
+}
+
+function createThemeToggle() {
+  if (!document.body) {
+    return null;
+  }
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "theme-toggle";
+  button.setAttribute("aria-pressed", "false");
+  button.setAttribute("data-theme-toggle", "");
+  button.setAttribute("aria-label", "Arcane-Modus umschalten");
+  button.setAttribute("title", "Arcane-Modus umschalten");
+
+  button.innerHTML = `
+    <span class="theme-toggle__orb" aria-hidden="true"></span>
+    <span class="theme-toggle__text">
+      <span class="theme-toggle__title">Arcane Mode</span>
+      <span class="theme-toggle__status" data-theme-status>OFF</span>
+    </span>
+  `;
+
+  document.body.appendChild(button);
+
+  return button;
+}
+
+function triggerScreenFlash() {
+  if (!document.body || prefersReducedMotion.matches) {
+    return;
+  }
+
+  document.body.classList.add("is-flashing");
+  window.setTimeout(() => {
+    document.body.classList.remove("is-flashing");
+  }, 650);
+}
+
+function applyThemeState({ isArcane, button, statusElement }) {
+  if (!document.body) {
+    return;
+  }
+
+  document.body.classList.toggle("arcane-theme", isArcane);
+
+  if (button) {
+    button.classList.toggle("is-active", isArcane);
+    button.setAttribute("aria-pressed", isArcane ? "true" : "false");
+  }
+
+  if (statusElement) {
+    statusElement.textContent = isArcane ? "ON" : "OFF";
+  }
+
+  storeTheme(isArcane ? "arcane" : "classic");
+}
+
+function initThemeToggle() {
+  const initialPreference = readStoredTheme();
+  const isArcaneInitially = initialPreference === "arcane";
+  const button = createThemeToggle();
+
+  if (!button) {
+    return;
+  }
+
+  const statusElement = button.querySelector("[data-theme-status]");
+
+  applyThemeState({ isArcane: isArcaneInitially, button, statusElement });
+
+  button.addEventListener("click", () => {
+    const nextState = !document.body.classList.contains("arcane-theme");
+    applyThemeState({ isArcane: nextState, button, statusElement });
+    triggerScreenFlash();
+  });
+}
+
+initThemeToggle();
