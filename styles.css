@@ -921,7 +921,7 @@ body.dark-theme {
   --muted: #b5b5b5;
   --timeline-line: rgba(110, 110, 110, 0.45);
   --box-bg: rgba(30, 30, 30, 0.88);
-  background: #0d0d0d;
+  background: linear-gradient(160deg, #0d0d0d 0%, #121212 60%, #080808 100%);
 }
 
 body.dark-theme::before {
@@ -932,9 +932,10 @@ body.dark-theme::before {
 }
 
 body.dark-theme main {
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  background: linear-gradient(145deg, rgba(28, 28, 28, 0.92), rgba(18, 18, 18, 0.75));
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
 }
 
 body.dark-theme .intro__info h1 {
