@@ -9,6 +9,36 @@ const bubbleSafeInset = 18;
 let activeBubble = null;
 let pendingLayoutFrame = null;
 
+const skillTrendDatasetConfig = [
+  {
+    label: "C#",
+    data: [45, 58, 72, 84, 90, 93],
+    lineVar: "--chart-line-1",
+    fillVar: "--chart-line-1-fill",
+  },
+  {
+    label: "Python",
+    data: [30, 42, 55, 68, 76, 85],
+    lineVar: "--chart-line-2",
+    fillVar: "--chart-line-2-fill",
+  },
+  {
+    label: "Kotlin",
+    data: [20, 36, 52, 66, 80, 88],
+    lineVar: "--chart-line-3",
+    fillVar: "--chart-line-3-fill",
+  },
+  {
+    label: "C",
+    data: [10, 18, 28, 36, 48, 60],
+    lineVar: "--chart-line-4",
+    fillVar: "--chart-line-4-fill",
+  },
+];
+
+const skillTrendLabels = ["2020", "2021", "2022", "2023", "2024", "2025"];
+let skillTrendChart = null;
+
 function updateBubbleDetail(button) {
   if (!bubbleLabel || !bubbleDescription) return;
 
@@ -222,13 +252,13 @@ function createThemeToggle() {
   button.className = "theme-toggle";
   button.setAttribute("aria-pressed", "false");
   button.setAttribute("data-theme-toggle", "");
-  button.setAttribute("aria-label", "Arcane-Modus umschalten");
-  button.setAttribute("title", "Arcane-Modus umschalten");
+  button.setAttribute("aria-label", "Dark-Mode umschalten");
+  button.setAttribute("title", "Dark-Mode umschalten");
 
   button.innerHTML = `
     <span class="theme-toggle__orb" aria-hidden="true"></span>
     <span class="theme-toggle__text">
-      <span class="theme-toggle__title">Arcane Mode</span>
+      <span class="theme-toggle__title">Dark Mode</span>
       <span class="theme-toggle__status" data-theme-status>OFF</span>
     </span>
   `;
@@ -249,28 +279,29 @@ function triggerScreenFlash() {
   }, 650);
 }
 
-function applyThemeState({ isArcane, button, statusElement }) {
+function applyThemeState({ isDark, button, statusElement }) {
   if (!document.body) {
     return;
   }
 
-  document.body.classList.toggle("arcane-theme", isArcane);
+  document.body.classList.toggle("dark-theme", isDark);
 
   if (button) {
-    button.classList.toggle("is-active", isArcane);
-    button.setAttribute("aria-pressed", isArcane ? "true" : "false");
+    button.classList.toggle("is-active", isDark);
+    button.setAttribute("aria-pressed", isDark ? "true" : "false");
   }
 
   if (statusElement) {
-    statusElement.textContent = isArcane ? "ON" : "OFF";
+    statusElement.textContent = isDark ? "ON" : "OFF";
   }
 
-  storeTheme(isArcane ? "arcane" : "classic");
+  storeTheme(isDark ? "dark" : "light");
+  updateSkillTrendTheme();
 }
 
 function initThemeToggle() {
   const initialPreference = readStoredTheme();
-  const isArcaneInitially = initialPreference === "arcane";
+  const isDarkInitially = initialPreference === "dark";
   const button = createThemeToggle();
 
   if (!button) {
@@ -279,11 +310,11 @@ function initThemeToggle() {
 
   const statusElement = button.querySelector("[data-theme-status]");
 
-  applyThemeState({ isArcane: isArcaneInitially, button, statusElement });
+  applyThemeState({ isDark: isDarkInitially, button, statusElement });
 
   button.addEventListener("click", () => {
-    const nextState = !document.body.classList.contains("arcane-theme");
-    applyThemeState({ isArcane: nextState, button, statusElement });
+    const nextState = !document.body.classList.contains("dark-theme");
+    applyThemeState({ isDark: nextState, button, statusElement });
     triggerScreenFlash();
   });
 }
@@ -293,55 +324,32 @@ initThemeToggle();
 const skillTrendCtx = document.getElementById("skillTrend");
 
 if (skillTrendCtx) {
-  new Chart(skillTrendCtx, {
+  const axisColor = readCssVariable("--chart-axis-color", "#1f1f1f");
+  const gridColor = readCssVariable("--chart-grid-color", "rgba(31, 31, 31, 0.12)");
+
+  skillTrendChart = new Chart(skillTrendCtx, {
     type: "line",
     data: {
-      labels: ["2020", "2021", "2022", "2023", "2024", "2025"],
-      datasets: [
-        {
-          label: "C#",
-          data: [45, 58, 72, 84, 90, 93],
-          borderColor: "#e74c3c",
-          backgroundColor: "rgba(231, 76, 60, 0.2)",
-          tension: 0.35,
-          fill: false,
-          pointBackgroundColor: "#e74c3c",
-        },
-        {
-          label: "Python",
-          data: [30, 42, 55, 68, 76, 85],
-          borderColor: "#3498db",
-          backgroundColor: "rgba(52, 152, 219, 0.2)",
-          tension: 0.35,
-          fill: false,
-          pointBackgroundColor: "#3498db",
-        },
-        {
-          label: "Kotlin",
-          data: [20, 36, 52, 66, 80, 88],
-          borderColor: "#27ae60",
-          backgroundColor: "rgba(39, 174, 96, 0.2)",
-          tension: 0.35,
-          fill: false,
-          pointBackgroundColor: "#27ae60",
-        },
-        {
-          label: "C",
-          data: [10, 18, 28, 36, 48, 60],
-          borderColor: "#f1c40f",
-          backgroundColor: "rgba(241, 196, 15, 0.2)",
-          tension: 0.35,
-          fill: false,
-          pointBackgroundColor: "#f1c40f",
-        },
-      ],
+      labels: skillTrendLabels,
+      datasets: buildSkillTrendDatasets(),
     },
     options: {
+      interaction: {
+        intersect: false,
+        mode: "nearest",
+      },
       scales: {
         x: {
           title: {
             text: "Jahr",
             display: true,
+            color: axisColor,
+          },
+          ticks: {
+            color: axisColor,
+          },
+          grid: {
+            color: gridColor,
           },
         },
         y: {
@@ -350,9 +358,128 @@ if (skillTrendCtx) {
           title: {
             text: "Skill-Level (%)",
             display: true,
+            color: axisColor,
+          },
+          ticks: {
+            color: axisColor,
+          },
+          grid: {
+            color: gridColor,
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: axisColor,
           },
         },
       },
     },
   });
+
+  updateSkillTrendTheme();
+}
+
+function readCssVariable(name, fallback = "") {
+  if (!name) {
+    return fallback;
+  }
+
+  const styles = getComputedStyle(document.documentElement);
+  const value = styles.getPropertyValue(name);
+
+  if (!value) {
+    return fallback;
+  }
+
+  return value.trim() || fallback;
+}
+
+function buildSkillTrendDatasets() {
+  const styles = getComputedStyle(document.documentElement);
+
+  return skillTrendDatasetConfig.map(({ label, data, lineVar, fillVar }) => {
+    const lineColor = (styles.getPropertyValue(lineVar) || "#ffffff").trim() || "#ffffff";
+    const fillColor = (styles.getPropertyValue(fillVar) || lineColor).trim() || lineColor;
+
+    return {
+      label,
+      data: [...data],
+      borderColor: lineColor,
+      backgroundColor: fillColor,
+      tension: 0.35,
+      fill: false,
+      pointBackgroundColor: lineColor,
+      pointBorderColor: lineColor,
+      pointHoverBackgroundColor: lineColor,
+      pointHoverBorderColor: lineColor,
+    };
+  });
+}
+
+function updateSkillTrendTheme() {
+  if (!skillTrendChart) {
+    return;
+  }
+
+  const styles = getComputedStyle(document.documentElement);
+  const axisColor = readCssVariable("--chart-axis-color", "#f0f0f0");
+  const gridColor = readCssVariable("--chart-grid-color", "rgba(255, 255, 255, 0.1)");
+
+  skillTrendChart.data.datasets.forEach((dataset, index) => {
+    const config = skillTrendDatasetConfig[index];
+
+    if (!config) {
+      return;
+    }
+
+    const lineColor = (styles.getPropertyValue(config.lineVar) || dataset.borderColor).trim() ||
+      dataset.borderColor;
+    const fillColor = (styles.getPropertyValue(config.fillVar) || dataset.backgroundColor).trim() ||
+      dataset.backgroundColor;
+
+    dataset.borderColor = lineColor;
+    dataset.backgroundColor = fillColor;
+    dataset.pointBackgroundColor = lineColor;
+    dataset.pointBorderColor = lineColor;
+    dataset.pointHoverBackgroundColor = lineColor;
+    dataset.pointHoverBorderColor = lineColor;
+  });
+
+  if (skillTrendChart.options.scales?.x) {
+    skillTrendChart.options.scales.x.ticks = {
+      ...(skillTrendChart.options.scales.x.ticks || {}),
+      color: axisColor,
+    };
+    skillTrendChart.options.scales.x.grid = {
+      ...(skillTrendChart.options.scales.x.grid || {}),
+      color: gridColor,
+    };
+    skillTrendChart.options.scales.x.title = {
+      ...(skillTrendChart.options.scales.x.title || {}),
+      color: axisColor,
+    };
+  }
+
+  if (skillTrendChart.options.scales?.y) {
+    skillTrendChart.options.scales.y.ticks = {
+      ...(skillTrendChart.options.scales.y.ticks || {}),
+      color: axisColor,
+    };
+    skillTrendChart.options.scales.y.grid = {
+      ...(skillTrendChart.options.scales.y.grid || {}),
+      color: gridColor,
+    };
+    skillTrendChart.options.scales.y.title = {
+      ...(skillTrendChart.options.scales.y.title || {}),
+      color: axisColor,
+    };
+  }
+
+  if (skillTrendChart.options.plugins?.legend?.labels) {
+    skillTrendChart.options.plugins.legend.labels.color = axisColor;
+  }
+
+  skillTrendChart.update();
 }
