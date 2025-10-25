@@ -465,6 +465,21 @@ section h2 {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
+.skill-progress {
+  margin-top: -1rem;
+  padding: 3rem 2rem;
+  background: var(--box-bg);
+  border: 1px solid var(--timeline-line);
+  border-radius: 1.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+#skillTrend {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
 .hobbies {
   display: flex;
   flex-direction: column;
