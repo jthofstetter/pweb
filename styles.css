@@ -102,35 +102,47 @@ section h2 {
   letter-spacing: 0.1rem;
 }
 
-.intro__quote {
-  width: min(100%, 720px);
-  margin: 1.5rem auto 1.5rem;
+.intro__statement {
+  position: relative;
+  width: min(100%, 760px);
+  margin: 0 auto 1rem;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.6));
+  border-radius: 1.75rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  text-align: justify;
+  line-height: 1.75;
 }
 
-.quote-rotator {
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-  font-style: italic;
+.intro__statement::before,
+.intro__statement::after {
+  position: absolute;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: rgba(31, 31, 31, 0.25);
+  font-weight: 700;
+  font-family: "Times New Roman", serif;
+}
+
+.intro__statement::before {
+  content: "\201C";
+  top: -1.25rem;
+  left: 1.75rem;
+}
+
+.intro__statement::after {
+  content: "\201D";
+  bottom: -1.75rem;
+  right: 1.75rem;
+}
+
+.intro__statement p + p {
+  margin-top: 1.2rem;
+}
+
+.intro__statement-question {
+  font-weight: 600;
+  letter-spacing: 0.12rem;
   text-align: center;
-  min-height: 3.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.quote-rotator__text {
-  display: inline-block;
-  opacity: 1;
-  transition: opacity 0.6s ease;
-}
-
-.quote-rotator__text.is-fading-out {
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .quote-rotator__text {
-    transition: none;
-  }
 }
 
 .timeline {
