@@ -178,6 +178,7 @@ section h2 {
   position: relative;
   display: flex;
   padding-left: 3.5rem;
+  width: 100%;
 }
 
 .timeline__item::before {
@@ -198,7 +199,6 @@ section h2 {
 
 .timeline__box {
   width: 100%;
-  max-width: 420px;
   padding: 2.5rem;
   background: linear-gradient(150deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.6));
   border: none;
