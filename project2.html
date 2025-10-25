@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projekt 2 &ndash; Portfolio CMS</title>
+    <title>Projekt 2 &ndash; Superstruct</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,23 +18,69 @@
       <a class="detail__back" href="index.html">Zurück</a>
       <header class="detail__header">
         <h1>Projekt 2</h1>
-        <p>Portfolio CMS</p>
+        <p>Superstruct</p>
       </header>
       <section class="detail__content">
         <p>
-          Um Inhalte schneller austauschen zu können, habe ich ein kleines
-          statisches CMS gebaut. Es generiert Seiten aus Markdown-Dateien und
-          deployt per GitHub Actions.
+          Superstruct ist ein 3D-Unity-Spiel, das wir als Schulprojekt gebaut
+          haben. Der Fahrstuhl im Zentrum dient als Hub zwischen mehreren
+          Stockwerken voller Minigames. In jedem Abschnitt sammeln die
+          Spieler:innen Ressourcen, um den Fahrstuhl mit Energie zu versorgen und
+          so die nächste Ebene freizuschalten.
+        </p>
+        <p>
+          Jede Etage stellt ein eigenes Szenario dar &ndash; von Geschicklichkeits-
+          Sequenzen bis hin zu kleinen Rätselräumen. Dadurch entsteht ein Loop
+          aus Erforschen, Sammeln und Upgraden, der die Spieler:innen motiviert,
+          immer weiter nach oben zu gelangen.
         </p>
         <ul class="detail__list">
-          <li>Technologien: Node.js, Eleventy, Tailwind CSS</li>
+          <li>Team: Schulprojekt mit mehreren Mitschüler:innen</li>
+          <li>Focus: Elevator-Hub, Ressourcen-Progression und Minispiel-Mix</li>
+          <li>Stage: Spielbarer Prototyp mit vertikalem Slice</li>
+        </ul>
+        <h2>Project Overview</h2>
+        <p>
+          Der Code organisiert die Stockwerke als einzelne Unity-Szenen, die der
+          Fahrstuhl zur Laufzeit lädt. Ein Ressourcen-Manager verfolgt, welche
+          Items in den Minigames verdient werden und welche Upgrades damit
+          finanzierbar sind. Erst wenn genügend Material zusammenkommt, öffnet
+          sich die Tür zur nächsten Etage.
+        </p>
+        <h2>Core Gameplay Features</h2>
+        <ul class="detail__list">
           <li>
-            Features: Markdown-zu-HTML Build-Pipeline, automatisches Deployment,
-            Komponentenbibliothek
+            Zentraler Fahrstuhl als Navigationspunkt mit Übergangsanimationen
+            zwischen den Etagen.
           </li>
           <li>
-            Lernfokus: Content-Workflows, CI/CD und wiederverwendbare
-            UI-Bausteine
+            Drei Minigame-Typen (Geschicklichkeit, Reaktion, Ressourcenpuzzle),
+            die nacheinander freigespielt werden.
+          </li>
+          <li>
+            Fortschrittsanzeige, die zeigt, wie viele Materialien noch fehlen, um
+            den Aufstieg zu schaffen.
+          </li>
+        </ul>
+        <h2>Tech Stack</h2>
+        <ul class="detail__list">
+          <li>Unity Engine (3D)</li>
+          <li>C# Gameplay-Skripting</li>
+          <li>Unity Animator &amp; Timeline für Cutscenes</li>
+        </ul>
+        <h2>My Contributions</h2>
+        <ul class="detail__list">
+          <li>
+            Aufbau der Aufzugslogik inklusive Zustandsmaschine für Etagen und
+            Übergänge.
+          </li>
+          <li>
+            Entwicklung zweier Minigames mit Ressourcen-Belohnungen und
+            Schwierigkeitskurve.
+          </li>
+          <li>
+            Erstellung der UI-Anzeigen für Fortschritt, Inventar und
+            Zielvorgaben auf jedem Stockwerk.
           </li>
         </ul>
       </section>
