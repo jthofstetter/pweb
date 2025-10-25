@@ -5,12 +5,27 @@
   --muted: #9a9a9a;
   --timeline-line: #c7c7c7;
   --box-bg: #ffffff;
+  --chart-line-1: #1f1f1f;
+  --chart-line-1-fill: rgba(31, 31, 31, 0.18);
+  --chart-line-2: #4c4c4c;
+  --chart-line-2-fill: rgba(76, 76, 76, 0.18);
+  --chart-line-3: #7a7a7a;
+  --chart-line-3-fill: rgba(122, 122, 122, 0.18);
+  --chart-line-4: #a7a7a7;
+  --chart-line-4-fill: rgba(167, 167, 167, 0.18);
+  --chart-axis-color: rgba(31, 31, 31, 0.78);
+  --chart-grid-color: rgba(31, 31, 31, 0.12);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  background: var(--background);
+  transition: background 0.8s ease;
 }
 
 body {
@@ -921,21 +936,40 @@ body.dark-theme {
   --muted: #b5b5b5;
   --timeline-line: rgba(110, 110, 110, 0.45);
   --box-bg: rgba(30, 30, 30, 0.88);
-  background: linear-gradient(160deg, #0d0d0d 0%, #121212 60%, #080808 100%);
+  --chart-line-1: #f0f0f0;
+  --chart-line-1-fill: rgba(240, 240, 240, 0.18);
+  --chart-line-2: #c9c9c9;
+  --chart-line-2-fill: rgba(201, 201, 201, 0.18);
+  --chart-line-3: #9f9f9f;
+  --chart-line-3-fill: rgba(159, 159, 159, 0.2);
+  --chart-line-4: #7a7a7a;
+  --chart-line-4-fill: rgba(122, 122, 122, 0.22);
+  --chart-axis-color: rgba(230, 230, 230, 0.9);
+  --chart-grid-color: rgba(255, 255, 255, 0.08);
+  background: #0d0d0d;
 }
 
 body.dark-theme::before {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.25), transparent 55%),
-    radial-gradient(circle at 82% 12%, rgba(120, 120, 120, 0.25), transparent 60%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+  background: rgba(255, 255, 255, 0.22);
+  mix-blend-mode: normal;
 }
 
 body.dark-theme main {
-  background: linear-gradient(145deg, rgba(28, 28, 28, 0.92), rgba(18, 18, 18, 0.75));
-  border: 1px solid rgba(160, 160, 160, 0.2);
-  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(12px);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+body.dark-theme .intro__statement {
+  background: linear-gradient(165deg, rgba(30, 30, 30, 0.92), rgba(18, 18, 18, 0.82));
+  color: #f0f0f0;
+  border: 1px solid rgba(140, 140, 140, 0.35);
+  box-shadow: 0 28px 75px rgba(0, 0, 0, 0.55);
+}
+
+body.dark-theme .intro__statement::before,
+body.dark-theme .intro__statement::after {
+  color: rgba(255, 255, 255, 0.18);
 }
 
 body.dark-theme .intro__info h1 {
