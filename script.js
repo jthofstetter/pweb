@@ -222,13 +222,13 @@ function createThemeToggle() {
   button.className = "theme-toggle";
   button.setAttribute("aria-pressed", "false");
   button.setAttribute("data-theme-toggle", "");
-  button.setAttribute("aria-label", "Arcane-Modus umschalten");
-  button.setAttribute("title", "Arcane-Modus umschalten");
+  button.setAttribute("aria-label", "Dark Mode umschalten");
+  button.setAttribute("title", "Dark Mode umschalten");
 
   button.innerHTML = `
-    <span class="theme-toggle__orb" aria-hidden="true"></span>
-    <span class="theme-toggle__text">
-      <span class="theme-toggle__title">Arcane Mode</span>
+    <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+    <span class="theme-toggle__label">
+      <span class="theme-toggle__title">DARK MODE</span>
       <span class="theme-toggle__status" data-theme-status>OFF</span>
     </span>
   `;
@@ -238,39 +238,31 @@ function createThemeToggle() {
   return button;
 }
 
-function triggerScreenFlash() {
-  if (!document.body || prefersReducedMotion.matches) {
-    return;
-  }
-
-  document.body.classList.add("is-flashing");
-  window.setTimeout(() => {
-    document.body.classList.remove("is-flashing");
-  }, 650);
-}
-
-function applyThemeState({ isArcane, button, statusElement }) {
+function applyThemeState({ isDark, button, statusElement }) {
   if (!document.body) {
     return;
   }
 
-  document.body.classList.toggle("arcane-theme", isArcane);
+  document.body.classList.toggle("dark-theme", isDark);
 
   if (button) {
-    button.classList.toggle("is-active", isArcane);
-    button.setAttribute("aria-pressed", isArcane ? "true" : "false");
+    button.classList.toggle("is-active", isDark);
+    button.setAttribute("aria-pressed", isDark ? "true" : "false");
   }
 
   if (statusElement) {
-    statusElement.textContent = isArcane ? "ON" : "OFF";
+    statusElement.textContent = isDark ? "ON" : "OFF";
   }
 
-  storeTheme(isArcane ? "arcane" : "classic");
+  storeTheme(isDark ? "dark" : "light");
 }
 
 function initThemeToggle() {
   const initialPreference = readStoredTheme();
-  const isArcaneInitially = initialPreference === "arcane";
+  const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const isDarkInitially = initialPreference
+    ? initialPreference === "dark"
+    : systemPrefersDark;
   const button = createThemeToggle();
 
   if (!button) {
@@ -279,12 +271,11 @@ function initThemeToggle() {
 
   const statusElement = button.querySelector("[data-theme-status]");
 
-  applyThemeState({ isArcane: isArcaneInitially, button, statusElement });
+  applyThemeState({ isDark: isDarkInitially, button, statusElement });
 
   button.addEventListener("click", () => {
-    const nextState = !document.body.classList.contains("arcane-theme");
-    applyThemeState({ isArcane: nextState, button, statusElement });
-    triggerScreenFlash();
+    const nextState = !document.body.classList.contains("dark-theme");
+    applyThemeState({ isDark: nextState, button, statusElement });
   });
 }
 
