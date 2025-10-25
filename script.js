@@ -280,3 +280,70 @@ function initThemeToggle() {
 }
 
 initThemeToggle();
+
+const skillTrendCtx = document.getElementById("skillTrend");
+
+if (skillTrendCtx) {
+  new Chart(skillTrendCtx, {
+    type: "line",
+    data: {
+      labels: ["2020", "2021", "2022", "2023", "2024", "2025"],
+      datasets: [
+        {
+          label: "C#",
+          data: [45, 58, 72, 84, 90, 93],
+          borderColor: "#e74c3c",
+          backgroundColor: "rgba(231, 76, 60, 0.2)",
+          tension: 0.35,
+          fill: false,
+          pointBackgroundColor: "#e74c3c",
+        },
+        {
+          label: "Python",
+          data: [30, 42, 55, 68, 76, 85],
+          borderColor: "#3498db",
+          backgroundColor: "rgba(52, 152, 219, 0.2)",
+          tension: 0.35,
+          fill: false,
+          pointBackgroundColor: "#3498db",
+        },
+        {
+          label: "Kotlin",
+          data: [20, 36, 52, 66, 80, 88],
+          borderColor: "#27ae60",
+          backgroundColor: "rgba(39, 174, 96, 0.2)",
+          tension: 0.35,
+          fill: false,
+          pointBackgroundColor: "#27ae60",
+        },
+        {
+          label: "C",
+          data: [10, 18, 28, 36, 48, 60],
+          borderColor: "#f1c40f",
+          backgroundColor: "rgba(241, 196, 15, 0.2)",
+          tension: 0.35,
+          fill: false,
+          pointBackgroundColor: "#f1c40f",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        x: {
+          title: {
+            text: "Jahr",
+            display: true,
+          },
+        },
+        y: {
+          beginAtZero: true,
+          max: 100,
+          title: {
+            text: "Skill-Level (%)",
+            display: true,
+          },
+        },
+      },
+    },
+  });
+}
