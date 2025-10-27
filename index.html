@@ -163,7 +163,14 @@
 
       <section class="skill-progress">
         <h2>Skill Trend</h2>
-        <canvas id="skillTrend" width="400" height="240"></canvas>
+        <figure class="skill-progress__chart" aria-labelledby="skillTrendTitle">
+          <figcaption id="skillTrendTitle" class="visually-hidden">
+            Skill Trend Chart
+          </figcaption>
+          <div class="skill-progress__canvas">
+            <canvas id="skillTrend" role="img"></canvas>
+          </div>
+        </figure>
       </section>
 
       <section class="special-interests">
