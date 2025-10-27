@@ -34,12 +34,6 @@ const skillTrendDatasetConfig = [
     lineVar: "--chart-line-4",
     fillVar: "--chart-line-4-fill",
   },
-  {
-    label: "Russisch",
-    data: [5, 14, 26, 44, 58, 72],
-    lineVar: "--chart-line-5",
-    fillVar: "--chart-line-5-fill",
-  },
 ];
 
 const skillTrendLabels = ["2020", "2021", "2022", "2023", "2024", "2025"];
@@ -332,32 +326,6 @@ const skillTrendCtx = document.getElementById("skillTrend");
 if (skillTrendCtx) {
   const axisColor = readCssVariable("--chart-axis-color", "#1f1f1f");
   const gridColor = readCssVariable("--chart-grid-color", "rgba(31, 31, 31, 0.12)");
-  const tooltipBackground = readCssVariable(
-    "--chart-tooltip-bg",
-    "rgba(17, 17, 17, 0.9)",
-  );
-  const tooltipColor = readCssVariable("--chart-tooltip-color", "#f5f5f5");
-  const tooltipBorder = readCssVariable("--timeline-line", "rgba(31, 31, 31, 0.1)");
-  const baseAnimation = prefersReducedMotion.matches
-    ? false
-    : {
-        duration: 1100,
-        easing: "easeOutQuart",
-      };
-  const datasetAnimations = prefersReducedMotion.matches
-    ? {}
-    : {
-        tension: {
-          duration: 900,
-          easing: "easeOutQuad",
-          from: 0.25,
-          to: 0.4,
-        },
-        y: {
-          duration: 950,
-          easing: "easeOutCubic",
-        },
-      };
 
   skillTrendChart = new Chart(skillTrendCtx, {
     type: "line",
@@ -366,31 +334,9 @@ if (skillTrendCtx) {
       datasets: buildSkillTrendDatasets(),
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      layout: {
-        padding: {
-          top: 12,
-          right: 16,
-          bottom: 8,
-          left: 8,
-        },
-      },
-      animation: baseAnimation,
-      animations: datasetAnimations,
-      elements: {
-        line: {
-          borderCapStyle: "round",
-          borderJoinStyle: "round",
-        },
-        point: {
-          borderWidth: 2,
-          hoverBorderWidth: 2,
-        },
-      },
       interaction: {
         intersect: false,
-        mode: "index",
+        mode: "nearest",
       },
       scales: {
         x: {
@@ -424,40 +370,15 @@ if (skillTrendCtx) {
       },
       plugins: {
         legend: {
-          position: "top",
           labels: {
             color: axisColor,
-            usePointStyle: true,
-            boxWidth: 12,
-            padding: 18,
-            font: {
-              family: '"Montserrat", sans-serif',
-              weight: "500",
-            },
           },
-        },
-        tooltip: {
-          backgroundColor: tooltipBackground,
-          borderColor: tooltipBorder,
-          borderWidth: 1,
-          titleFont: {
-            family: '"Montserrat", sans-serif',
-            weight: "600",
-          },
-          bodyFont: {
-            family: '"Montserrat", sans-serif',
-          },
-          titleColor: tooltipColor,
-          bodyColor: tooltipColor,
-          padding: 14,
-          cornerRadius: 12,
         },
       },
     },
   });
 
   updateSkillTrendTheme();
-  applySkillTrendMotionPreference();
 }
 
 function readCssVariable(name, fallback = "") {
@@ -488,19 +409,11 @@ function buildSkillTrendDatasets() {
       borderColor: lineColor,
       backgroundColor: fillColor,
       tension: 0.35,
-      fill: true,
-      borderWidth: 3,
-      cubicInterpolationMode: "monotone",
+      fill: false,
       pointBackgroundColor: lineColor,
       pointBorderColor: lineColor,
-      pointRadius: 4,
-      pointHoverRadius: 6,
-      pointHitRadius: 14,
-      pointBorderWidth: 2,
-      pointHoverBorderWidth: 2,
       pointHoverBackgroundColor: lineColor,
       pointHoverBorderColor: lineColor,
-      clip: 0,
     };
   });
 }
@@ -513,20 +426,6 @@ function updateSkillTrendTheme() {
   const styles = getComputedStyle(document.documentElement);
   const axisColor = readCssVariable("--chart-axis-color", "#f0f0f0");
   const gridColor = readCssVariable("--chart-grid-color", "rgba(255, 255, 255, 0.1)");
-  const tooltipBackground = readCssVariable(
-    "--chart-tooltip-bg",
-    skillTrendChart.options.plugins?.tooltip?.backgroundColor ||
-      "rgba(17, 17, 17, 0.9)",
-  );
-  const tooltipColor = readCssVariable(
-    "--chart-tooltip-color",
-    skillTrendChart.options.plugins?.tooltip?.titleColor || "#f5f5f5",
-  );
-  const tooltipBorder = readCssVariable(
-    "--timeline-line",
-    skillTrendChart.options.plugins?.tooltip?.borderColor ||
-      "rgba(31, 31, 31, 0.1)",
-  );
 
   skillTrendChart.data.datasets.forEach((dataset, index) => {
     const config = skillTrendDatasetConfig[index];
@@ -582,50 +481,5 @@ function updateSkillTrendTheme() {
     skillTrendChart.options.plugins.legend.labels.color = axisColor;
   }
 
-  if (skillTrendChart.options.plugins?.tooltip) {
-    skillTrendChart.options.plugins.tooltip.backgroundColor = tooltipBackground;
-    skillTrendChart.options.plugins.tooltip.borderColor = tooltipBorder;
-    skillTrendChart.options.plugins.tooltip.titleColor = tooltipColor;
-    skillTrendChart.options.plugins.tooltip.bodyColor = tooltipColor;
-  }
-
   skillTrendChart.update();
-}
-
-function applySkillTrendMotionPreference() {
-  if (!skillTrendChart) {
-    return;
-  }
-
-  const baseAnimation = prefersReducedMotion.matches
-    ? false
-    : {
-        duration: 1100,
-        easing: "easeOutQuart",
-      };
-
-  const datasetAnimations = prefersReducedMotion.matches
-    ? {}
-    : {
-        tension: {
-          duration: 900,
-          easing: "easeOutQuad",
-          from: 0.25,
-          to: 0.4,
-        },
-        y: {
-          duration: 950,
-          easing: "easeOutCubic",
-        },
-      };
-
-  skillTrendChart.options.animation = baseAnimation;
-  skillTrendChart.options.animations = datasetAnimations;
-  skillTrendChart.update();
-}
-
-if (typeof prefersReducedMotion.addEventListener === "function") {
-  prefersReducedMotion.addEventListener("change", applySkillTrendMotionPreference);
-} else if (typeof prefersReducedMotion.addListener === "function") {
-  prefersReducedMotion.addListener(applySkillTrendMotionPreference);
 }
