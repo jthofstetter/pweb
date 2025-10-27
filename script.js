@@ -34,10 +34,32 @@ const skillTrendDatasetConfig = [
     lineVar: "--chart-line-4",
     fillVar: "--chart-line-4-fill",
   },
+  {
+    label: "Russisch",
+    data: [12, 24, 38, 52, 68, 82],
+    lineVar: "--chart-line-5",
+    fillVar: "--chart-line-5-fill",
+  },
 ];
 
 const skillTrendLabels = ["2020", "2021", "2022", "2023", "2024", "2025"];
 let skillTrendChart = null;
+
+function createSkillTrendGradient(context, color) {
+  if (!context || !color) {
+    return color;
+  }
+
+  const { canvas } = context;
+  const gradientHeight =
+    canvas.getBoundingClientRect().height || canvas.clientHeight || canvas.height || 320;
+  const gradient = context.createLinearGradient(0, 0, 0, gradientHeight);
+
+  gradient.addColorStop(0, color);
+  gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+  return gradient;
+}
 
 function updateBubbleDetail(button) {
   if (!bubbleLabel || !bubbleDescription) return;
@@ -334,9 +356,52 @@ if (skillTrendCtx) {
       datasets: buildSkillTrendDatasets(),
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: prefersReducedMotion.matches
+        ? false
+        : {
+            duration: 1200,
+            easing: "easeOutQuart",
+          },
+      animations: prefersReducedMotion.matches
+        ? {}
+        : {
+            tension: {
+              duration: 1400,
+              easing: "easeOutQuart",
+              from: 0.15,
+              to: 0.35,
+            },
+            radius: {
+              duration: 200,
+              easing: "easeOutQuad",
+              delay: 80,
+            },
+          },
       interaction: {
         intersect: false,
         mode: "nearest",
+      },
+      layout: {
+        padding: {
+          top: 12,
+          left: 6,
+          right: 14,
+          bottom: 12,
+        },
+      },
+      elements: {
+        point: {
+          radius: 4,
+          hoverRadius: 7,
+          borderWidth: 2,
+        },
+        line: {
+          borderWidth: 2.5,
+          borderCapStyle: "round",
+          borderJoinStyle: "round",
+        },
       },
       scales: {
         x: {
@@ -372,6 +437,20 @@ if (skillTrendCtx) {
         legend: {
           labels: {
             color: axisColor,
+            usePointStyle: true,
+            pointStyle: "circle",
+          },
+        },
+        tooltip: {
+          backgroundColor: "rgba(25, 25, 25, 0.86)",
+          titleColor: "#ffffff",
+          bodyColor: "#f5f5f5",
+          borderColor: "rgba(255, 255, 255, 0.08)",
+          borderWidth: 1,
+          displayColors: false,
+          padding: 12,
+          callbacks: {
+            label: (context) => `${context.dataset.label}: ${context.formattedValue}%`,
           },
         },
       },
@@ -399,9 +478,12 @@ function readCssVariable(name, fallback = "") {
 function buildSkillTrendDatasets() {
   const styles = getComputedStyle(document.documentElement);
 
+  const context = skillTrendCtx ? skillTrendCtx.getContext("2d") : null;
+
   return skillTrendDatasetConfig.map(({ label, data, lineVar, fillVar }) => {
     const lineColor = (styles.getPropertyValue(lineVar) || "#ffffff").trim() || "#ffffff";
-    const fillColor = (styles.getPropertyValue(fillVar) || lineColor).trim() || lineColor;
+    const fallbackFill = (styles.getPropertyValue(fillVar) || lineColor).trim() || lineColor;
+    const fillColor = createSkillTrendGradient(context, fallbackFill);
 
     return {
       label,
@@ -409,11 +491,13 @@ function buildSkillTrendDatasets() {
       borderColor: lineColor,
       backgroundColor: fillColor,
       tension: 0.35,
-      fill: false,
+      fill: "origin",
       pointBackgroundColor: lineColor,
       pointBorderColor: lineColor,
       pointHoverBackgroundColor: lineColor,
       pointHoverBorderColor: lineColor,
+      pointHoverRadius: 7,
+      metaFillColor: fallbackFill,
     };
   });
 }
@@ -426,6 +510,7 @@ function updateSkillTrendTheme() {
   const styles = getComputedStyle(document.documentElement);
   const axisColor = readCssVariable("--chart-axis-color", "#f0f0f0");
   const gridColor = readCssVariable("--chart-grid-color", "rgba(255, 255, 255, 0.1)");
+  const context = skillTrendCtx ? skillTrendCtx.getContext("2d") : null;
 
   skillTrendChart.data.datasets.forEach((dataset, index) => {
     const config = skillTrendDatasetConfig[index];
@@ -436,15 +521,18 @@ function updateSkillTrendTheme() {
 
     const lineColor = (styles.getPropertyValue(config.lineVar) || dataset.borderColor).trim() ||
       dataset.borderColor;
-    const fillColor = (styles.getPropertyValue(config.fillVar) || dataset.backgroundColor).trim() ||
+    const fillColor =
+      (styles.getPropertyValue(config.fillVar) || dataset.metaFillColor || dataset.backgroundColor).trim() ||
       dataset.backgroundColor;
 
     dataset.borderColor = lineColor;
-    dataset.backgroundColor = fillColor;
+    dataset.backgroundColor = createSkillTrendGradient(context, fillColor);
     dataset.pointBackgroundColor = lineColor;
     dataset.pointBorderColor = lineColor;
     dataset.pointHoverBackgroundColor = lineColor;
     dataset.pointHoverBorderColor = lineColor;
+    dataset.fill = "origin";
+    dataset.metaFillColor = fillColor;
   });
 
   if (skillTrendChart.options.scales?.x) {
@@ -481,5 +569,52 @@ function updateSkillTrendTheme() {
     skillTrendChart.options.plugins.legend.labels.color = axisColor;
   }
 
+  const tooltipOptions = skillTrendChart.options.plugins?.tooltip;
+
+  if (tooltipOptions) {
+    const isDarkTheme = document.body.classList.contains("dark-theme");
+
+    tooltipOptions.backgroundColor = isDarkTheme
+      ? "rgba(12, 12, 12, 0.92)"
+      : "rgba(25, 25, 25, 0.86)";
+    tooltipOptions.titleColor = isDarkTheme ? "#f8f8f8" : "#111111";
+    tooltipOptions.bodyColor = isDarkTheme ? "#f1f1f1" : "#222222";
+    tooltipOptions.borderColor = isDarkTheme
+      ? "rgba(255, 255, 255, 0.12)"
+      : "rgba(0, 0, 0, 0.08)";
+  }
+
   skillTrendChart.update();
+}
+
+if (typeof prefersReducedMotion?.addEventListener === "function") {
+  prefersReducedMotion.addEventListener("change", (event) => {
+    if (!skillTrendChart) {
+      return;
+    }
+
+    skillTrendChart.options.animation = event.matches
+      ? false
+      : {
+          duration: 1200,
+          easing: "easeOutQuart",
+        };
+    skillTrendChart.options.animations = event.matches
+      ? {}
+      : {
+          tension: {
+            duration: 1400,
+            easing: "easeOutQuart",
+            from: 0.15,
+            to: 0.35,
+          },
+          radius: {
+            duration: 200,
+            easing: "easeOutQuad",
+            delay: 80,
+          },
+        };
+
+    skillTrendChart.update();
+  });
 }
