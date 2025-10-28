@@ -519,6 +519,83 @@ section h2 {
   opacity: 0.9;
 }
 
+.skill-progress__controls {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.1rem;
+}
+
+.skill-toggle {
+  --toggle-accent: #4c6ef5;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.9rem 0.35rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(31, 31, 31, 0.08);
+  box-shadow: 0 12px 28px rgba(31, 31, 31, 0.1);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.skill-toggle:hover,
+.skill-toggle:focus-within {
+  box-shadow: 0 16px 32px rgba(31, 31, 31, 0.16);
+}
+
+.skill-toggle input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.skill-toggle__track {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 46px;
+  height: 26px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(31, 31, 31, 0.1);
+  border: 1px solid rgba(31, 31, 31, 0.05);
+  transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-toggle__thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-toggle input:checked + .skill-toggle__track {
+  background: var(--toggle-accent);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+}
+
+.skill-toggle input:checked + .skill-toggle__track .skill-toggle__thumb {
+  transform: translateX(20px);
+  background: #ffffff;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.22);
+}
+
+.skill-toggle__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+}
+
 #skillTrend {
   display: block;
   max-width: 100%;
@@ -541,6 +618,38 @@ body.dark-theme .skill-progress__chart::before {
   background: radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.22), transparent 60%),
     radial-gradient(circle at 80% 22%, rgba(132, 94, 247, 0.26), transparent 62%);
   opacity: 0.82;
+}
+
+body.dark-theme .skill-toggle {
+  background: rgba(18, 18, 18, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6);
+  color: rgba(245, 245, 245, 0.94);
+}
+
+body.dark-theme .skill-toggle:hover,
+body.dark-theme .skill-toggle:focus-within {
+  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.65);
+}
+
+body.dark-theme .skill-toggle__track {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+body.dark-theme .skill-toggle__thumb {
+  background: #f7f7f7;
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-theme .skill-toggle input:checked + .skill-toggle__track {
+  border-color: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 0 0 3px rgba(8, 8, 8, 0.55);
+}
+
+body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle__thumb {
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.38);
 }
 
 .hobbies {
