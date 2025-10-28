@@ -12,37 +12,54 @@ let pendingLayoutFrame = null;
 const skillTrendDatasetConfig = [
   {
     label: "C#",
-    data: [45, 58, 72, 84, 90, 93],
+    data: [45, 48, 44, 52, 58, 61, 66, 72, 68, 76, 82, 79, 85, 88, 90, 94],
     lineVar: "--chart-line-1",
     fillVar: "--chart-line-1-fill",
   },
   {
     label: "Python",
-    data: [30, 42, 55, 68, 76, 85],
+    data: [30, 38, 28, 47, 53, 41, 62, 74, 59, 79, 66, 83, 71, 90, 75, 92],
     lineVar: "--chart-line-2",
     fillVar: "--chart-line-2-fill",
   },
   {
     label: "Kotlin",
-    data: [20, 36, 52, 66, 80, 88],
+    data: [20, 24, 19, 33, 42, 39, 54, 63, 58, 69, 64, 74, 72, 80, 77, 88],
     lineVar: "--chart-line-3",
     fillVar: "--chart-line-3-fill",
   },
   {
     label: "C",
-    data: [10, 18, 28, 36, 48, 60],
+    data: [10, 13, 9, 17, 23, 21, 29, 38, 31, 44, 36, 49, 41, 55, 47, 62],
     lineVar: "--chart-line-4",
     fillVar: "--chart-line-4-fill",
   },
   {
     label: "Russisch",
-    data: [12, 24, 38, 52, 68, 82],
+    data: [12, 22, 14, 27, 34, 19, 43, 58, 33, 62, 44, 71, 49, 78, 52, 85],
     lineVar: "--chart-line-5",
     fillVar: "--chart-line-5-fill",
   },
 ];
 
-const skillTrendLabels = ["2020", "2021", "2022", "2023", "2024", "2025"];
+const skillTrendLabels = [
+  "2020",
+  " ",
+  " ",
+  "2021",
+  " ",
+  " ",
+  "2022",
+  " ",
+  " ",
+  "2023",
+  " ",
+  " ",
+  "2024",
+  " ",
+  " ",
+  "2025",
+];
 let skillTrendChart = null;
 
 function createSkillTrendGradient(context, color) {
@@ -382,20 +399,20 @@ if (skillTrendCtx) {
       },
       layout: {
         padding: {
-          top: 12,
-          left: 6,
-          right: 14,
-          bottom: 12,
+          top: 24,
+          left: 26,
+          right: 28,
+          bottom: 26,
         },
       },
       elements: {
         point: {
-          radius: 4,
-          hoverRadius: 7,
+          radius: 5,
+          hoverRadius: 8,
           borderWidth: 2,
         },
         line: {
-          borderWidth: 2.5,
+          borderWidth: 2.75,
           borderCapStyle: "round",
           borderJoinStyle: "round",
         },
@@ -409,9 +426,18 @@ if (skillTrendCtx) {
           },
           ticks: {
             color: axisColor,
+            font: {
+              family: "Montserrat, sans-serif",
+              size: 12,
+            },
+            padding: 10,
           },
           grid: {
             color: gridColor,
+            borderColor: axisColor,
+            borderWidth: 1.2,
+            lineWidth: 1.2,
+            drawTicks: false,
           },
         },
         y: {
@@ -424,9 +450,17 @@ if (skillTrendCtx) {
           },
           ticks: {
             color: axisColor,
+            font: {
+              family: "Montserrat, sans-serif",
+              size: 12,
+            },
+            padding: 12,
           },
           grid: {
             color: gridColor,
+            borderColor: axisColor,
+            borderWidth: 1.2,
+            lineWidth: 1.2,
           },
         },
       },
@@ -536,10 +570,19 @@ function updateSkillTrendTheme() {
     skillTrendChart.options.scales.x.ticks = {
       ...(skillTrendChart.options.scales.x.ticks || {}),
       color: axisColor,
+      font: {
+        ...(skillTrendChart.options.scales.x.ticks?.font || {}),
+        family: "Montserrat, sans-serif",
+        size: 12,
+      },
     };
     skillTrendChart.options.scales.x.grid = {
       ...(skillTrendChart.options.scales.x.grid || {}),
       color: gridColor,
+      borderColor: axisColor,
+      borderWidth: 1.2,
+      lineWidth: 1.2,
+      drawTicks: false,
     };
     skillTrendChart.options.scales.x.title = {
       ...(skillTrendChart.options.scales.x.title || {}),
@@ -551,10 +594,19 @@ function updateSkillTrendTheme() {
     skillTrendChart.options.scales.y.ticks = {
       ...(skillTrendChart.options.scales.y.ticks || {}),
       color: axisColor,
+      font: {
+        ...(skillTrendChart.options.scales.y.ticks?.font || {}),
+        family: "Montserrat, sans-serif",
+        size: 12,
+      },
     };
     skillTrendChart.options.scales.y.grid = {
       ...(skillTrendChart.options.scales.y.grid || {}),
       color: gridColor,
+      borderColor: axisColor,
+      borderWidth: 1.2,
+      lineWidth: 1.2,
+      drawTicks: false,
     };
     skillTrendChart.options.scales.y.title = {
       ...(skillTrendChart.options.scales.y.title || {}),
