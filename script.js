@@ -12,38 +12,57 @@ let pendingLayoutFrame = null;
 const skillTrendDatasetConfig = [
   {
     label: "C#",
-    data: [45, 58, 72, 84, 90, 93],
+    data: [45, 48, 44, 52, 58, 61, 66, 72, 68, 76, 82, 79, 85, 88, 90, 94],
     lineVar: "--chart-line-1",
     fillVar: "--chart-line-1-fill",
   },
   {
     label: "Python",
-    data: [30, 42, 55, 68, 76, 85],
+    data: [30, 38, 28, 47, 53, 41, 62, 74, 59, 79, 66, 83, 71, 90, 75, 92],
     lineVar: "--chart-line-2",
     fillVar: "--chart-line-2-fill",
   },
   {
     label: "Kotlin",
-    data: [20, 36, 52, 66, 80, 88],
+    data: [20, 24, 19, 33, 42, 39, 54, 63, 58, 69, 64, 74, 72, 80, 77, 88],
     lineVar: "--chart-line-3",
     fillVar: "--chart-line-3-fill",
   },
   {
     label: "C",
-    data: [10, 18, 28, 36, 48, 60],
+    data: [10, 13, 9, 17, 23, 21, 29, 38, 31, 44, 36, 49, 41, 55, 47, 62],
     lineVar: "--chart-line-4",
     fillVar: "--chart-line-4-fill",
   },
   {
     label: "Russisch",
-    data: [12, 24, 38, 52, 68, 82],
+    data: [12, 22, 14, 27, 34, 19, 43, 58, 33, 62, 44, 71, 49, 78, 52, 85],
     lineVar: "--chart-line-5",
     fillVar: "--chart-line-5-fill",
   },
 ];
 
-const skillTrendLabels = ["2020", "2021", "2022", "2023", "2024", "2025"];
+const skillTrendLabels = [
+  "2020",
+  " ",
+  " ",
+  "2021",
+  " ",
+  " ",
+  "2022",
+  " ",
+  " ",
+  "2023",
+  " ",
+  " ",
+  "2024",
+  " ",
+  " ",
+  "2025",
+];
 let skillTrendChart = null;
+const skillToggleContainer = document.querySelector("[data-skill-controls]");
+const skillToggleElements = new Map();
 
 function createSkillTrendGradient(context, color) {
   if (!context || !color) {
@@ -193,6 +212,95 @@ if (bubbleButtons.length) {
 }
 
 const skillBars = document.querySelectorAll("[data-skill-bar]");
+
+function refreshSkillToggleColors() {
+  if (!skillToggleElements.size) {
+    return;
+  }
+
+  skillToggleElements.forEach((toggle, index) => {
+    const config = skillTrendDatasetConfig[index];
+
+    if (!config) {
+      return;
+    }
+
+    const accentColor = readCssVariable(config.lineVar, "#4c6ef5");
+    toggle.style.setProperty("--toggle-accent", accentColor);
+  });
+}
+
+function handleSkillToggleChange(event) {
+  if (!skillTrendChart) {
+    return;
+  }
+
+  const target = event.target;
+
+  if (!target || target.type !== "checkbox") {
+    return;
+  }
+
+  const datasetIndex = Number.parseInt(target.dataset.datasetIndex, 10);
+
+  if (!Number.isFinite(datasetIndex)) {
+    return;
+  }
+
+  const isVisible = target.checked;
+
+  skillTrendChart.setDatasetVisibility(datasetIndex, isVisible);
+  skillTrendChart.update();
+}
+
+function renderSkillTrendControls() {
+  if (!skillToggleContainer || !skillTrendChart) {
+    return;
+  }
+
+  skillToggleContainer.innerHTML = "";
+  skillToggleElements.clear();
+
+  skillTrendDatasetConfig.forEach(({ label, lineVar }, index) => {
+    const toggleId = `skill-toggle-${index}`;
+    const wrapper = document.createElement("label");
+    wrapper.className = "skill-toggle";
+    wrapper.setAttribute("for", toggleId);
+
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.id = toggleId;
+    input.checked = true;
+    input.dataset.datasetIndex = String(index);
+
+    const track = document.createElement("span");
+    track.className = "skill-toggle__track";
+    track.setAttribute("aria-hidden", "true");
+
+    const thumb = document.createElement("span");
+    thumb.className = "skill-toggle__thumb";
+    thumb.setAttribute("aria-hidden", "true");
+    track.appendChild(thumb);
+
+    const text = document.createElement("span");
+    text.className = "skill-toggle__label";
+    text.textContent = label;
+
+    wrapper.appendChild(input);
+    wrapper.appendChild(track);
+    wrapper.appendChild(text);
+
+    input.addEventListener("change", handleSkillToggleChange);
+
+    const accentColor = readCssVariable(lineVar, "#4c6ef5");
+    wrapper.style.setProperty("--toggle-accent", accentColor);
+
+    skillToggleContainer.appendChild(wrapper);
+    skillToggleElements.set(index, wrapper);
+  });
+
+  refreshSkillToggleColors();
+}
 
 function fillSkillBar(bar) {
   if (!bar || bar.dataset.animated === "true") {
@@ -382,20 +490,20 @@ if (skillTrendCtx) {
       },
       layout: {
         padding: {
-          top: 12,
-          left: 6,
-          right: 14,
-          bottom: 12,
+          top: 24,
+          left: 26,
+          right: 28,
+          bottom: 26,
         },
       },
       elements: {
         point: {
-          radius: 4,
-          hoverRadius: 7,
+          radius: 5,
+          hoverRadius: 8,
           borderWidth: 2,
         },
         line: {
-          borderWidth: 2.5,
+          borderWidth: 2.75,
           borderCapStyle: "round",
           borderJoinStyle: "round",
         },
@@ -409,9 +517,18 @@ if (skillTrendCtx) {
           },
           ticks: {
             color: axisColor,
+            font: {
+              family: "Montserrat, sans-serif",
+              size: 12,
+            },
+            padding: 10,
           },
           grid: {
             color: gridColor,
+            borderColor: axisColor,
+            borderWidth: 1.2,
+            lineWidth: 1.2,
+            drawTicks: false,
           },
         },
         y: {
@@ -424,9 +541,17 @@ if (skillTrendCtx) {
           },
           ticks: {
             color: axisColor,
+            font: {
+              family: "Montserrat, sans-serif",
+              size: 12,
+            },
+            padding: 12,
           },
           grid: {
             color: gridColor,
+            borderColor: axisColor,
+            borderWidth: 1.2,
+            lineWidth: 1.2,
           },
         },
       },
@@ -437,6 +562,7 @@ if (skillTrendCtx) {
             usePointStyle: true,
             pointStyle: "circle",
           },
+          onClick: () => {},
         },
         tooltip: {
           backgroundColor: "rgba(25, 25, 25, 0.86)",
@@ -454,6 +580,7 @@ if (skillTrendCtx) {
     },
   });
 
+  renderSkillTrendControls();
   updateSkillTrendTheme();
 }
 
@@ -462,8 +589,13 @@ function readCssVariable(name, fallback = "") {
     return fallback;
   }
 
-  const styles = getComputedStyle(document.documentElement);
-  const value = styles.getPropertyValue(name);
+  const rootStyles = getComputedStyle(document.documentElement);
+  let value = rootStyles.getPropertyValue(name);
+
+  if ((!value || !value.trim()) && document.body) {
+    const bodyStyles = getComputedStyle(document.body);
+    value = bodyStyles.getPropertyValue(name);
+  }
 
   if (!value) {
     return fallback;
@@ -473,13 +605,11 @@ function readCssVariable(name, fallback = "") {
 }
 
 function buildSkillTrendDatasets() {
-  const styles = getComputedStyle(document.documentElement);
-
   const context = skillTrendCtx ? skillTrendCtx.getContext("2d") : null;
 
   return skillTrendDatasetConfig.map(({ label, data, lineVar, fillVar }) => {
-    const lineColor = (styles.getPropertyValue(lineVar) || "#ffffff").trim() || "#ffffff";
-    const fallbackFill = (styles.getPropertyValue(fillVar) || lineColor).trim() || lineColor;
+    const lineColor = readCssVariable(lineVar, "#ffffff");
+    const fallbackFill = readCssVariable(fillVar, lineColor);
     const fillColor = createSkillTrendGradient(context, fallbackFill);
 
     return {
@@ -504,7 +634,6 @@ function updateSkillTrendTheme() {
     return;
   }
 
-  const styles = getComputedStyle(document.documentElement);
   const axisColor = readCssVariable("--chart-axis-color", "#f0f0f0");
   const gridColor = readCssVariable("--chart-grid-color", "rgba(255, 255, 255, 0.1)");
   const context = skillTrendCtx ? skillTrendCtx.getContext("2d") : null;
@@ -516,11 +645,8 @@ function updateSkillTrendTheme() {
       return;
     }
 
-    const lineColor = (styles.getPropertyValue(config.lineVar) || dataset.borderColor).trim() ||
-      dataset.borderColor;
-    const fillColor =
-      (styles.getPropertyValue(config.fillVar) || dataset.metaFillColor || dataset.backgroundColor).trim() ||
-      dataset.backgroundColor;
+    const lineColor = readCssVariable(config.lineVar, dataset.borderColor);
+    const fillColor = readCssVariable(config.fillVar, dataset.metaFillColor || dataset.backgroundColor);
 
     dataset.borderColor = lineColor;
     dataset.backgroundColor = createSkillTrendGradient(context, fillColor);
@@ -536,10 +662,19 @@ function updateSkillTrendTheme() {
     skillTrendChart.options.scales.x.ticks = {
       ...(skillTrendChart.options.scales.x.ticks || {}),
       color: axisColor,
+      font: {
+        ...(skillTrendChart.options.scales.x.ticks?.font || {}),
+        family: "Montserrat, sans-serif",
+        size: 12,
+      },
     };
     skillTrendChart.options.scales.x.grid = {
       ...(skillTrendChart.options.scales.x.grid || {}),
       color: gridColor,
+      borderColor: axisColor,
+      borderWidth: 1.2,
+      lineWidth: 1.2,
+      drawTicks: false,
     };
     skillTrendChart.options.scales.x.title = {
       ...(skillTrendChart.options.scales.x.title || {}),
@@ -551,10 +686,19 @@ function updateSkillTrendTheme() {
     skillTrendChart.options.scales.y.ticks = {
       ...(skillTrendChart.options.scales.y.ticks || {}),
       color: axisColor,
+      font: {
+        ...(skillTrendChart.options.scales.y.ticks?.font || {}),
+        family: "Montserrat, sans-serif",
+        size: 12,
+      },
     };
     skillTrendChart.options.scales.y.grid = {
       ...(skillTrendChart.options.scales.y.grid || {}),
       color: gridColor,
+      borderColor: axisColor,
+      borderWidth: 1.2,
+      lineWidth: 1.2,
+      drawTicks: false,
     };
     skillTrendChart.options.scales.y.title = {
       ...(skillTrendChart.options.scales.y.title || {}),
@@ -581,6 +725,7 @@ function updateSkillTrendTheme() {
       : "rgba(0, 0, 0, 0.08)";
   }
 
+  refreshSkillToggleColors();
   skillTrendChart.update();
 }
 
