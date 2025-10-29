@@ -240,7 +240,7 @@ function layoutBubbles() {
     const targetX = (percentX / 100) * width;
     const targetY = (percentY / 100) * height;
 
-    const safeInset = Math.max(bubbleSafeInset, radius * 0.8);
+    const safeInset = bubbleSafeInset;
     const minX = radius + safeInset;
     const maxX = width - radius - safeInset;
     const minY = radius + safeInset;
