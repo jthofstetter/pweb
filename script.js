@@ -9,57 +9,138 @@ const bubbleSafeInset = 18;
 let activeBubble = null;
 let pendingLayoutFrame = null;
 
-const skillTrendDatasetConfig = [
+const skillTrendTimeline = (() => {
+  const startYear = 2020;
+  const endYear = 2024;
+  const points = [];
+  const labels = [];
+
+  for (let year = startYear; year <= endYear; year += 1) {
+    for (let quarter = 1; quarter <= 4; quarter += 1) {
+      points.push({ year, quarter });
+      labels.push(quarter === 1 ? `${year}` : " ");
+    }
+  }
+
+  return { points, labels };
+})();
+
+const rawSkillTrendDatasetConfig = [
   {
     label: "C#",
-    data: [45, 48, 44, 52, 58, 61, 66, 72, 68, 76, 82, 79, 85, 88, 90, 94],
+    startYear: 2020,
+    quarterlyValues: [
+      5,
+      7,
+      10,
+      10,
+      20,
+      25,
+      30,
+      43,
+      46,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      78,
+      80,
+      82,
+      84,
+      85,
+    ],
     lineVar: "--chart-line-1",
     fillVar: "--chart-line-1-fill",
   },
   {
     label: "Python",
-    data: [30, 38, 28, 47, 53, 41, 62, 74, 59, 79, 66, 83, 71, 90, 75, 92],
+    startYear: 2022,
+    quarterlyValues: [
+      0,
+      10,
+      10,
+      20,
+      25,
+      30,
+      33,
+      45,
+      50,
+      66,
+      75,
+      78,
+    ],
     lineVar: "--chart-line-2",
     fillVar: "--chart-line-2-fill",
   },
   {
     label: "Kotlin",
-    data: [20, 24, 19, 33, 42, 39, 54, 63, 58, 69, 64, 74, 72, 80, 77, 88],
+    startYear: 2023,
+    quarterlyValues: [0, 8, 10, 23, 16, 32, 40, 73],
     lineVar: "--chart-line-3",
     fillVar: "--chart-line-3-fill",
   },
   {
     label: "C",
-    data: [10, 13, 9, 17, 23, 21, 29, 38, 31, 44, 36, 49, 41, 55, 47, 62],
+    startYear: 2023,
+    quarterlyValues: [0, 10, 10, 20, 20, 30, 65, 70],
     lineVar: "--chart-line-4",
     fillVar: "--chart-line-4-fill",
   },
   {
     label: "Russisch",
-    data: [12, 22, 14, 27, 34, 19, 43, 58, 33, 62, 44, 71, 49, 78, 52, 85],
+    startYear: 2022,
+    quarterlyValues: [
+      0,
+      0,
+      10,
+      10,
+      10,
+      20,
+      20,
+      10,
+      25,
+      33,
+      48,
+      52,
+    ],
     lineVar: "--chart-line-5",
     fillVar: "--chart-line-5-fill",
   },
 ];
 
-const skillTrendLabels = [
-  "2020",
-  " ",
-  " ",
-  "2021",
-  " ",
-  " ",
-  "2022",
-  " ",
-  " ",
-  "2023",
-  " ",
-  " ",
-  "2024",
-  " ",
-  " ",
-  "2025",
-];
+const skillTrendDatasetConfig = rawSkillTrendDatasetConfig.map(
+  ({ label, startYear, quarterlyValues, lineVar, fillVar }) => {
+    const data = skillTrendTimeline.points.map(({ year, quarter }) => {
+      if (year < startYear) {
+        return null;
+      }
+
+      const offset = (year - startYear) * 4 + (quarter - 1);
+
+      if (offset < 0) {
+        return null;
+      }
+
+      if (offset >= quarterlyValues.length) {
+        const fallback = quarterlyValues[quarterlyValues.length - 1];
+        return Number.isFinite(fallback) ? fallback : null;
+      }
+
+      return quarterlyValues[offset];
+    });
+
+    return {
+      label,
+      data,
+      lineVar,
+      fillVar,
+    };
+  }
+);
+
+const skillTrendLabels = skillTrendTimeline.labels;
 let skillTrendChart = null;
 const skillToggleContainer = document.querySelector("[data-skill-controls]");
 const skillToggleElements = new Map();
