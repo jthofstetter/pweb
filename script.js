@@ -670,12 +670,16 @@ function readCssVariable(name, fallback = "") {
     return fallback;
   }
 
-  const rootStyles = getComputedStyle(document.documentElement);
-  let value = rootStyles.getPropertyValue(name);
+  let value = "";
 
-  if ((!value || !value.trim()) && document.body) {
+  if (document.body) {
     const bodyStyles = getComputedStyle(document.body);
     value = bodyStyles.getPropertyValue(name);
+  }
+
+  if (!value || !value.trim()) {
+    const rootStyles = getComputedStyle(document.documentElement);
+    value = rootStyles.getPropertyValue(name);
   }
 
   if (!value) {
