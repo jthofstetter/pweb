@@ -928,10 +928,52 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
   transition: color 0.6s ease;
 }
 
+.detail__contributors {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  color: var(--accent);
+}
+
+.detail__contributors-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(31, 31, 31, 0.08);
+  color: var(--accent);
+  border: 1px solid rgba(31, 31, 31, 0.12);
+  font-size: 1.2rem;
+}
+
+.detail__contributors-count {
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
 .detail__content {
   display: grid;
   gap: 1.5rem;
   line-height: 1.8;
+}
+
+.detail__media-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 1.25rem;
+  border: 2px dashed rgba(31, 31, 31, 0.18);
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(31, 31, 31, 0.04), rgba(31, 31, 31, 0.08));
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
 }
 
 .detail__list {
@@ -1087,7 +1129,7 @@ body.dark-theme .theme-toggle__status {
 }
 
 body.dark-theme {
-  --background: #0c0c0c;
+  --background: #000000;
   --accent: #f2f2f2;
   --muted: #b5b5b5;
   --timeline-line: rgba(110, 110, 110, 0.45);
@@ -1104,7 +1146,7 @@ body.dark-theme {
   --chart-line-5-fill: rgba(177, 151, 252, 0.22);
   --chart-axis-color: #ffffff;
   --chart-grid-color: rgba(255, 255, 255, 0.32);
-  background: #0d0d0d;
+  background: #000000;
 }
 
 body.dark-theme::before {
@@ -1230,9 +1272,9 @@ body.dark-theme .bubble-detail__description {
 }
 
 body.dark-theme .detail {
-  background: linear-gradient(150deg, rgba(28, 28, 28, 0.95), rgba(18, 18, 18, 0.7));
-  border: 1px solid rgba(140, 140, 140, 0.35);
-  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.6);
+  background: #000000;
+  border: none;
+  box-shadow: none;
   color: #f0f0f0;
 }
 
@@ -1250,6 +1292,17 @@ body.dark-theme .detail__header p {
 
 body.dark-theme .detail__list li::before {
   color: #d8d8d8;
+}
+
+body.dark-theme .detail__contributors-icon {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+body.dark-theme .detail__media-placeholder {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0));
+  color: rgba(255, 255, 255, 0.72);
 }
 
 body.dark-theme .hobby__image {
