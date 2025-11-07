@@ -147,15 +147,17 @@ section h2 {
   box-shadow: 0 26px 52px rgba(0, 0, 0, 0.28);
 }
 
-.portrait-image {
+.intro__portrait-image {
   width: 100%;
   height: 100%;
-  background-image: var(--portrait-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(255, 255, 255, 0.4);
+  object-fit: cover;
+  display: block;
   transition: transform 0.6s ease;
+}
+
+.intro__portrait:hover .intro__portrait-image,
+.intro__portrait:focus-within .intro__portrait-image {
+  transform: scale(1.05);
 }
 
 .intro__statement {
@@ -729,11 +731,19 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
   aspect-ratio: 4 / 3;
   min-height: 0;
   box-shadow: 0 22px 48px rgba(0, 0, 0, 0.18);
-  background-image: var(--hobby-photo);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.hobby__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.hobby__image--photo:hover .hobby__photo,
+.hobby__image--photo:focus-within .hobby__photo {
+  transform: scale(1.05);
 }
 
 .projects__grid {
@@ -1376,8 +1386,8 @@ body.dark-theme .intro__portrait:focus-within .intro__portrait-frame {
   box-shadow: 0 42px 82px rgba(0, 0, 0, 0.68);
 }
 
-body.dark-theme .portrait-image {
-  background-color: rgba(24, 24, 24, 0.85);
+body.dark-theme .intro__portrait-image {
+  filter: brightness(1.04);
 }
 
 body.dark-theme .hobby__image {
@@ -1388,7 +1398,6 @@ body.dark-theme .hobby__image {
 
 body.dark-theme .hobby__image--photo {
   box-shadow: 0 36px 80px rgba(0, 0, 0, 0.72);
-  background-color: rgba(18, 18, 18, 0.9);
 }
 
 body.dark-theme .footer {
