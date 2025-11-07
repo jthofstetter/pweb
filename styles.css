@@ -109,6 +109,13 @@ section h2 {
   transition: color 0.6s ease;
 }
 
+.intro__portrait {
+  width: clamp(220px, 24vw, 320px);
+  justify-self: center;
+  display: grid;
+  place-items: center;
+}
+
 .portrait-placeholder {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -117,6 +124,38 @@ section h2 {
   place-items: center;
   font-weight: 500;
   letter-spacing: 0.1rem;
+}
+
+.intro__portrait-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 3px solid var(--accent);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(240, 240, 240, 0.6));
+  display: grid;
+  place-items: center;
+  transition: transform 0.6s ease, box-shadow 0.6s ease, border 0.6s ease,
+    background 0.6s ease;
+}
+
+.intro__portrait:hover .intro__portrait-frame,
+.intro__portrait:focus-within .intro__portrait-frame {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.28);
+}
+
+.portrait-image {
+  width: 100%;
+  height: 100%;
+  background-image: var(--portrait-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: transform 0.6s ease;
 }
 
 .intro__statement {
@@ -680,6 +719,23 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
   transition: background 0.8s ease, border 0.8s ease, box-shadow 0.8s ease;
 }
 
+.hobby__image--photo {
+  padding: 0;
+  border: none;
+  background: none;
+  display: block;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.18);
+  background-image: var(--hobby-photo);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -928,10 +984,52 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
   transition: color 0.6s ease;
 }
 
+.detail__contributors {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  color: var(--accent);
+}
+
+.detail__contributors-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(31, 31, 31, 0.08);
+  color: var(--accent);
+  border: 1px solid rgba(31, 31, 31, 0.12);
+  font-size: 1.2rem;
+}
+
+.detail__contributors-count {
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
 .detail__content {
   display: grid;
   gap: 1.5rem;
   line-height: 1.8;
+}
+
+.detail__media-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 1.25rem;
+  border: 2px dashed rgba(31, 31, 31, 0.18);
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(31, 31, 31, 0.04), rgba(31, 31, 31, 0.08));
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
 }
 
 .detail__list {
@@ -1087,7 +1185,7 @@ body.dark-theme .theme-toggle__status {
 }
 
 body.dark-theme {
-  --background: #0c0c0c;
+  --background: #000000;
   --accent: #f2f2f2;
   --muted: #b5b5b5;
   --timeline-line: rgba(110, 110, 110, 0.45);
@@ -1104,7 +1202,7 @@ body.dark-theme {
   --chart-line-5-fill: rgba(177, 151, 252, 0.22);
   --chart-axis-color: #ffffff;
   --chart-grid-color: rgba(255, 255, 255, 0.32);
-  background: #0d0d0d;
+  background: #000000;
 }
 
 body.dark-theme::before {
@@ -1230,9 +1328,9 @@ body.dark-theme .bubble-detail__description {
 }
 
 body.dark-theme .detail {
-  background: linear-gradient(150deg, rgba(28, 28, 28, 0.95), rgba(18, 18, 18, 0.7));
-  border: 1px solid rgba(140, 140, 140, 0.35);
-  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.6);
+  background: #000000;
+  border: none;
+  box-shadow: none;
   color: #f0f0f0;
 }
 
@@ -1252,10 +1350,45 @@ body.dark-theme .detail__list li::before {
   color: #d8d8d8;
 }
 
+body.dark-theme .detail__contributors-icon {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+body.dark-theme .detail__media-placeholder {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0));
+  color: rgba(255, 255, 255, 0.72);
+}
+
+body.dark-theme .intro__portrait-frame {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(34, 34, 34, 0.9),
+    rgba(20, 20, 20, 0.65)
+  );
+  box-shadow: 0 32px 68px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme .intro__portrait:hover .intro__portrait-frame,
+body.dark-theme .intro__portrait:focus-within .intro__portrait-frame {
+  box-shadow: 0 42px 82px rgba(0, 0, 0, 0.68);
+}
+
+body.dark-theme .portrait-image {
+  background-color: rgba(24, 24, 24, 0.85);
+}
+
 body.dark-theme .hobby__image {
   background: rgba(30, 30, 30, 0.82);
   border-color: rgba(140, 140, 140, 0.4);
   box-shadow: 0 26px 65px rgba(0, 0, 0, 0.55);
+}
+
+body.dark-theme .hobby__image--photo {
+  box-shadow: 0 36px 80px rgba(0, 0, 0, 0.72);
+  background-color: rgba(18, 18, 18, 0.9);
 }
 
 body.dark-theme .footer {
