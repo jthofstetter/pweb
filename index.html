@@ -23,12 +23,17 @@
             <p class="intro__birth">17.10.2005</p>
           </div>
           <div class="intro__portrait">
-            <img
-              src="_DSC0059_edited.jpg"
-              alt="Porträt von Jannik Hofstetter"
-              class="portrait-image"
-              loading="lazy"
-            />
+            <div
+              class="intro__portrait-frame"
+              aria-label="Porträt von Jannik Hofstetter"
+              role="img"
+            >
+              <div
+                class="portrait-image"
+                aria-hidden="true"
+                style="--portrait-image: url('personalpicture.png')"
+              ></div>
+            </div>
           </div>
         </div>
         <div class="intro__statement" aria-label="Persönliches Statement">
@@ -328,13 +333,12 @@
               Spiele zur Verbesserung der Taktik.
             </p>
           </div>
-          <div class="hobby__image hobby__image--photo">
-            <img
-              src="IMG-20250719-WA0003.jpg"
-              alt="Jannik Hofstetter spielt Football"
-              loading="lazy"
-            />
-          </div>
+          <div
+            class="hobby__image hobby__image--photo"
+            role="img"
+            aria-label="Jannik Hofstetter spielt Football"
+            style="--hobby-photo: url('IMG-20250719-WA0003.jpg')"
+          ></div>
         </div>
         <div class="hobby">
           <div class="hobby__text">
