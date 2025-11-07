@@ -1,4 +1,5 @@
 :root {
+  --max-width: 1100px;
   --background: #f7f7f7;
   --accent: #1f1f1f;
   --muted: #9a9a9a;
@@ -34,7 +35,9 @@ body {
   background: var(--background);
   color: var(--accent);
   line-height: 1.6;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
   min-height: 100vh;
   position: relative;
   transition: background 0.8s ease, color 0.6s ease;
@@ -59,7 +62,7 @@ body.is-flashing::before {
 }
 
 main {
-  width: 100%;
+  width: min(100%, var(--max-width));
   padding: 4rem 2rem 6rem;
   position: relative;
   transition: background 0.8s ease, border 0.8s ease, box-shadow 0.8s ease;
