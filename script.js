@@ -54,7 +54,7 @@ const rawSkillTrendDatasetConfig = [
     lineVar: "--chart-line-1",
     fillVar: "--chart-line-1-fill",
     description:
-      "Über fünf Jahre an der HTL intensiv genutzt – von den ersten Konsolenprojekten bis zu komplexeren Übungsaufgaben.",
+      "Used for more than five years at HTL, from first console exercises to more demanding coursework projects.",
   },
   {
     label: "Python",
@@ -76,7 +76,7 @@ const rawSkillTrendDatasetConfig = [
     lineVar: "--chart-line-2",
     fillVar: "--chart-line-2-fill",
     description:
-      "In der Schule für KI-Experimente eingesetzt und davor schon für ein 64-Pixel-LED-Feld (Doodle Jump) programmiert.",
+      "Applied in school for AI experiments and earlier to build a 64-pixel LED Doodle Jump game.",
   },
   {
     label: "Kotlin",
@@ -85,7 +85,7 @@ const rawSkillTrendDatasetConfig = [
     lineVar: "--chart-line-3",
     fillVar: "--chart-line-3-fill",
     description:
-      "Für mobile Experimente und kleinere App-Konzepte ausprobiert, um Android besser zu verstehen.",
+      "Tried for mobile experiments and compact app concepts to understand Android development better.",
   },
   {
     label: "C",
@@ -94,7 +94,7 @@ const rawSkillTrendDatasetConfig = [
     lineVar: "--chart-line-4",
     fillVar: "--chart-line-4-fill",
     description:
-      "Für low-level Grundlagen genutzt, um Speicherverwaltung und Systemnähe besser zu verstehen.",
+      "Used to practice low-level fundamentals like memory management and system-level thinking.",
   },
   {
     label: "Russisch",
@@ -116,7 +116,7 @@ const rawSkillTrendDatasetConfig = [
     lineVar: "--chart-line-5",
     fillVar: "--chart-line-5-fill",
     description:
-      "Langjähriges Interesse durch Musik – irgendwann wegen der Schönheit der Sprache intensiver gelernt.",
+      "Long-standing interest sparked by music that turned into learning the language for its beauty.",
   },
 ];
 
