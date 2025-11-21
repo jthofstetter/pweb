@@ -28,8 +28,6 @@ const skillTrendTimeline = (() => {
 const rawSkillTrendDatasetConfig = [
   {
     label: "C#",
-    description:
-      "Über fünf Jahre durchgehend im HTL-Unterricht, von Grundlagen über OOP bis zu größeren Projekten im Einsatz.",
     startYear: 2020,
     quarterlyValues: [
       5,
@@ -58,8 +56,6 @@ const rawSkillTrendDatasetConfig = [
   },
   {
     label: "Python",
-    description:
-      "In der Schule für KI-Experimente verwendet und davor schon für ein 64-Pixel-LED-Panel, auf dem wir Doodle Jump umgesetzt haben.",
     startYear: 2022,
     quarterlyValues: [
       0,
@@ -80,7 +76,6 @@ const rawSkillTrendDatasetConfig = [
   },
   {
     label: "Kotlin",
-    description: "Für mobile Projekte und Android-Übungen an der HTL ausprobiert, um moderne Patterns zu testen.",
     startYear: 2023,
     quarterlyValues: [0, 8, 10, 23, 16, 32, 40, 73],
     lineVar: "--chart-line-3",
@@ -88,8 +83,6 @@ const rawSkillTrendDatasetConfig = [
   },
   {
     label: "C",
-    description:
-      "Grundlagen für Low-Level- und Embedded-Übungen genutzt, um näher an Hardware und Speicherverwaltung zu arbeiten.",
     startYear: 2023,
     quarterlyValues: [0, 10, 10, 20, 20, 30, 65, 70],
     lineVar: "--chart-line-4",
@@ -97,8 +90,6 @@ const rawSkillTrendDatasetConfig = [
   },
   {
     label: "Russisch",
-    description:
-      "Lange Interesse geweckt durch Musik; später aus Begeisterung für die Sprache gelernt und mit Apps sowie Gesprächen geübt.",
     startYear: 2022,
     quarterlyValues: [
       0,
@@ -120,7 +111,7 @@ const rawSkillTrendDatasetConfig = [
 ];
 
 const skillTrendDatasetConfig = rawSkillTrendDatasetConfig.map(
-  ({ label, description, startYear, quarterlyValues, lineVar, fillVar }) => {
+  ({ label, startYear, quarterlyValues, lineVar, fillVar }) => {
     const data = skillTrendTimeline.points.map(({ year, quarter }) => {
       if (year < startYear) {
         return null;
@@ -140,7 +131,12 @@ const skillTrendDatasetConfig = rawSkillTrendDatasetConfig.map(
       return quarterlyValues[offset];
     });
 
-    return { label, description, data, lineVar, fillVar };
+    return {
+      label,
+      data,
+      lineVar,
+      fillVar,
+    };
   }
 );
 
@@ -346,7 +342,7 @@ function renderSkillTrendControls() {
   skillToggleContainer.innerHTML = "";
   skillToggleElements.clear();
 
-  skillTrendDatasetConfig.forEach(({ label, description, lineVar }, index) => {
+  skillTrendDatasetConfig.forEach(({ label, lineVar }, index) => {
     const toggleId = `skill-toggle-${index}`;
     const wrapper = document.createElement("label");
     wrapper.className = "skill-toggle";
@@ -371,14 +367,9 @@ function renderSkillTrendControls() {
     text.className = "skill-toggle__label";
     text.textContent = label;
 
-    const tooltip = document.createElement("span");
-    tooltip.className = "skill-toggle__tooltip";
-    tooltip.textContent = description || "Projekt- und Lernnotizen fehlen";
-
     wrapper.appendChild(input);
     wrapper.appendChild(track);
     wrapper.appendChild(text);
-    wrapper.appendChild(tooltip);
 
     input.addEventListener("change", handleSkillToggleChange);
 
