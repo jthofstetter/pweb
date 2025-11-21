@@ -180,7 +180,14 @@
       </section>
 
       <section class="skill-progress">
-        <h2>Skill Trend</h2>
+        <h2 class="skill-progress__title">
+          Skill Trend
+          <span class="skill-progress__asterisk" aria-hidden="true">*</span>
+          <span class="visually-hidden">
+            Hinweis: Skill Level basieren auf Selbsteinschätzung und investierter
+            Lernzeit.
+          </span>
+        </h2>
         <div class="skill-progress__chart" role="presentation">
           <canvas
             id="skillTrend"
@@ -194,6 +201,11 @@
           role="group"
           aria-label="Diagrammlinien ein- und ausblenden"
         ></div>
+        <p class="skill-progress__footnote">
+          * Skill Level, in dem Fall hier eine Mischung aus persönlicher
+          Einschätzung und wie genau / wie viel / wie lange man sich mit dem
+          jeweiligen Fach in der Zeit XY auseinandergesetzt hat.
+        </p>
       </section>
 
       <section class="special-interests">
