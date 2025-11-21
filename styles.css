@@ -556,6 +556,17 @@ section h2 {
   transform: translateY(-2px);
 }
 
+.skill-progress__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.skill-progress__title span[aria-hidden="true"] {
+  font-size: 1.1em;
+  color: var(--accent);
+}
+
 #skillTrend,
 .skill-progress__chart {
   transition: background 0.8s ease, border 0.8s ease, box-shadow 0.8s ease;
