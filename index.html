@@ -180,11 +180,13 @@
       </section>
 
       <section class="skill-progress">
-        <h2>Skill Trend</h2>
+        <h2 class="skill-progress__title">
+          Skill Trend<span aria-hidden="true">*</span>
+        </h2>
         <div class="skill-progress__chart" role="presentation">
           <canvas
             id="skillTrend"
-            aria-label="Verlauf der Programmiersprachen-Fähigkeiten"
+            aria-label="Trend of programming language skill levels"
             role="img"
           ></canvas>
         </div>
@@ -192,8 +194,12 @@
           class="skill-progress__controls"
           data-skill-controls
           role="group"
-          aria-label="Diagrammlinien ein- und ausblenden"
+          aria-label="Toggle chart lines"
         ></div>
+        <p class="skill-progress__note">
+          * Skill levels combine personal assessment with how deeply and how long
+          each subject was used during the shown period.
+        </p>
       </section>
 
       <section class="special-interests">
@@ -205,7 +211,7 @@
             role="listitem"
             data-interest
             data-label="BMW"
-            data-description="Leidenschaft für präzise Ingenieurskunst, Motorsport und Fahrdynamik."
+            data-description="Precision engineering, motorsport culture, and the feel of balanced handling."
             style="--x: 20%; --y: 30%; --size: 11rem"
           >
             BMW
@@ -215,11 +221,11 @@
             type="button"
             role="listitem"
             data-interest
-            data-label="Kunst"
-            data-description="Besuche von Galerien und eigenes Skizzieren zur Entspannung."
+            data-label="Art & Sketching"
+            data-description="Gallery visits and sketchbook studies to unwind and sharpen observation."
             style="--x: 45%; --y: 18%; --size: 8.5rem"
           >
-            Kunst
+            Art & Sketching
           </button>
           <button
             class="bubble"
@@ -227,7 +233,7 @@
             role="listitem"
             data-interest
             data-label="Rubik's Cube"
-            data-description="Speedcubing als mentales Training für Mustererkennung und Geduld."
+            data-description="Speedcubing as a playground for pattern recognition and patience."
             style="--x: 72%; --y: 28%; --size: 9.5rem"
           >
             Rubik's Cube
@@ -237,11 +243,11 @@
             type="button"
             role="listitem"
             data-interest
-            data-label="Video Games"
-            data-description="Strategie- und Simulationsspiele als Sandbox für Teamwork und Kreativität."
+            data-label="Strategy Games"
+            data-description="Strategy and sim titles for teamwork, creativity, and systems thinking."
             style="--x: 27%; --y: 62%; --size: 10rem"
           >
-            Video Games
+            Strategy Games
           </button>
           <button
             class="bubble"
@@ -249,7 +255,7 @@
             role="listitem"
             data-interest
             data-label="Video Editing"
-            data-description="Experimentiere mit Schnitt, Sounddesign und Motion Graphics."
+            data-description="Cutting footage, building soundscapes, and exploring motion graphics."
             style="--x: 55%; --y: 58%; --size: 8.75rem"
           >
             Video Editing
@@ -259,22 +265,22 @@
             type="button"
             role="listitem"
             data-interest
-            data-label="Picture Editing"
-            data-description="Bildkomposition und Farblooks in Lightroom und Photoshop."
+            data-label="Photo Editing"
+            data-description="Composing shots and crafting color grades in Lightroom and Photoshop."
             style="--x: 82%; --y: 63%; --size: 7.5rem"
           >
-            Picture Editing
+            Photo Editing
           </button>
           <button
             class="bubble"
             type="button"
             role="listitem"
             data-interest
-            data-label="Mentality"
-            data-description="Mindset-Training, Journaling und kontinuierliche Reflexion."
+            data-label="Mindset"
+            data-description="Mindset training, journaling, and consistent self-reflection."
             style="--x: 15%; --y: 78%; --size: 7.8rem"
           >
-            Mentality
+            Mindset
           </button>
           <button
             class="bubble"
@@ -282,7 +288,7 @@
             role="listitem"
             data-interest
             data-label="Philosophy"
-            data-description="Diskussionen über Ethik, Logik und die großen Fragen."
+            data-description="Conversations about ethics, logic, and the big questions."
             style="--x: 40%; --y: 78%; --size: 9rem"
           >
             Philosophy
@@ -293,7 +299,7 @@
             role="listitem"
             data-interest
             data-label="Neurobiology"
-            data-description="Neugier auf neuronale Netzwerke und kognitive Prozesse."
+            data-description="Curiosity about neural networks and cognitive processes."
             style="--x: 65%; --y: 82%; --size: 8.25rem"
           >
             Neurobiology
@@ -304,10 +310,76 @@
             role="listitem"
             data-interest
             data-label="Jordan Peterson"
-            data-description="Analyse seiner Vorträge zu Verantwortung, Ordnung und persönlichem Wachstum."
+            data-description="Analyzing his talks on responsibility, order, and personal growth."
             style="--x: 88%; --y: 82%; --size: 7rem"
           >
             Jordan Peterson
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Crypto"
+            data-description="Exploring blockchain, tokenomics, and market psychology."
+            style="--x: 8%; --y: 20%; --size: 7.4rem"
+          >
+            Crypto
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Robotics"
+            data-description="Hands-on curiosity for sensors, control loops, and autonomous motion."
+            style="--x: 90%; --y: 35%; --size: 8rem"
+          >
+            Robotics
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Success Psychology"
+            data-description="Studying habits, leverage, and compounding decisions behind lasting success."
+            style="--x: 10%; --y: 50%; --size: 8.4rem"
+          >
+            Success Psychology
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Mike Tyson"
+            data-description="Respect for his discipline, resilience, and precision inside the ring."
+            style="--x: 32%; --y: 42%; --size: 7.6rem"
+          >
+            Mike Tyson
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Arnold Schwarzenegger"
+            data-description="Blueprints on drive, reinvention, and bridging sport, business, and film."
+            style="--x: 60%; --y: 44%; --size: 8.6rem"
+          >
+            Arnold Schwarzenegger
+          </button>
+          <button
+            class="bubble"
+            type="button"
+            role="listitem"
+            data-interest
+            data-label="Bryan Johnson"
+            data-description="Biohacking, longevity protocols, and data-driven self-optimization."
+            style="--x: 78%; --y: 48%; --size: 7.9rem"
+          >
+            Bryan Johnson
           </button>
         </div>
         <div class="bubble-detail" aria-live="polite">
@@ -315,8 +387,7 @@
             Special Interests
           </h3>
           <p class="bubble-detail__description" data-interest-description>
-            Tippe oder klicke auf eine Blase, um mehr über meine Interessen zu
-            erfahren.
+            Tap or hover over a bubble to see why it matters to me.
           </p>
         </div>
       </section>
