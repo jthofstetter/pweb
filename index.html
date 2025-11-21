@@ -180,7 +180,10 @@
       </section>
 
       <section class="skill-progress">
-        <h2>Skill Trend</h2>
+        <h2 class="skill-progress__title">
+          Skill Trend<span aria-hidden="true">*</span>
+          <span class="sr-only"> – Hinweis zur Bewertung</span>
+        </h2>
         <div class="skill-progress__chart" role="presentation">
           <canvas
             id="skillTrend"
@@ -194,6 +197,11 @@
           role="group"
           aria-label="Diagrammlinien ein- und ausblenden"
         ></div>
+        <p class="skill-progress__note">
+          * Skill Level, in dem Fall hier eine Mischung aus persönlicher
+          Einschätzung und wie genau / wie viel / wie lange man sich mit dem
+          jeweiligen Fach in der Zeit XY auseinandergesetzt hat.
+        </p>
       </section>
 
       <section class="special-interests">

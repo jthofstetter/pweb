@@ -53,6 +53,8 @@ const rawSkillTrendDatasetConfig = [
     ],
     lineVar: "--chart-line-1",
     fillVar: "--chart-line-1-fill",
+    description:
+      "Über fünf Jahre an der HTL intensiv genutzt – von den ersten Konsolenprojekten bis zu komplexeren Übungsaufgaben.",
   },
   {
     label: "Python",
@@ -73,6 +75,8 @@ const rawSkillTrendDatasetConfig = [
     ],
     lineVar: "--chart-line-2",
     fillVar: "--chart-line-2-fill",
+    description:
+      "In der Schule für KI-Experimente eingesetzt und davor schon für ein 64-Pixel-LED-Feld (Doodle Jump) programmiert.",
   },
   {
     label: "Kotlin",
@@ -80,6 +84,8 @@ const rawSkillTrendDatasetConfig = [
     quarterlyValues: [0, 8, 10, 23, 16, 32, 40, 73],
     lineVar: "--chart-line-3",
     fillVar: "--chart-line-3-fill",
+    description:
+      "Für mobile Experimente und kleinere App-Konzepte ausprobiert, um Android besser zu verstehen.",
   },
   {
     label: "C",
@@ -87,6 +93,8 @@ const rawSkillTrendDatasetConfig = [
     quarterlyValues: [0, 10, 10, 20, 20, 30, 65, 70],
     lineVar: "--chart-line-4",
     fillVar: "--chart-line-4-fill",
+    description:
+      "Für low-level Grundlagen genutzt, um Speicherverwaltung und Systemnähe besser zu verstehen.",
   },
   {
     label: "Russisch",
@@ -107,11 +115,13 @@ const rawSkillTrendDatasetConfig = [
     ],
     lineVar: "--chart-line-5",
     fillVar: "--chart-line-5-fill",
+    description:
+      "Langjähriges Interesse durch Musik – irgendwann wegen der Schönheit der Sprache intensiver gelernt.",
   },
 ];
 
 const skillTrendDatasetConfig = rawSkillTrendDatasetConfig.map(
-  ({ label, startYear, quarterlyValues, lineVar, fillVar }) => {
+  ({ label, startYear, quarterlyValues, lineVar, fillVar, description }) => {
     const data = skillTrendTimeline.points.map(({ year, quarter }) => {
       if (year < startYear) {
         return null;
@@ -136,6 +146,7 @@ const skillTrendDatasetConfig = rawSkillTrendDatasetConfig.map(
       data,
       lineVar,
       fillVar,
+      description,
     };
   }
 );
@@ -342,7 +353,7 @@ function renderSkillTrendControls() {
   skillToggleContainer.innerHTML = "";
   skillToggleElements.clear();
 
-  skillTrendDatasetConfig.forEach(({ label, lineVar }, index) => {
+  skillTrendDatasetConfig.forEach(({ label, lineVar, description }, index) => {
     const toggleId = `skill-toggle-${index}`;
     const wrapper = document.createElement("label");
     wrapper.className = "skill-toggle";
@@ -367,9 +378,16 @@ function renderSkillTrendControls() {
     text.className = "skill-toggle__label";
     text.textContent = label;
 
+    const info = document.createElement("span");
+    info.className = "skill-toggle__info";
+    info.textContent =
+      description ||
+      "Kurzer Kontext folgt – was, wo und warum die Technologie genutzt wurde.";
+
     wrapper.appendChild(input);
     wrapper.appendChild(track);
     wrapper.appendChild(text);
+    wrapper.appendChild(info);
 
     input.addEventListener("change", handleSkillToggleChange);
 
