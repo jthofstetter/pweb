@@ -5,6 +5,7 @@
   --muted: #9a9a9a;
   --timeline-line: #c7c7c7;
   --box-bg: #ffffff;
+  --bubble-hover-text: #ffffff;
   --chart-line-1: #4c6ef5;
   --chart-line-1-fill: rgba(76, 110, 245, 0.12);
   --chart-line-2: #22b8cf;
@@ -556,17 +557,6 @@ section h2 {
   transform: translateY(-2px);
 }
 
-.skill-progress__title {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.skill-progress__title span[aria-hidden="true"] {
-  font-size: 1.1em;
-  color: var(--accent);
-}
-
 #skillTrend,
 .skill-progress__chart {
   transition: background 0.8s ease, border 0.8s ease, box-shadow 0.8s ease;
@@ -949,7 +939,9 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
 .bubble:focus-visible {
   transform: translate(-50%, -50%) scale(1.08);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
-  filter: brightness(1.05);
+  background: var(--accent);
+  color: var(--bubble-hover-text);
+  filter: brightness(1);
   z-index: 2;
 }
 
@@ -1289,6 +1281,7 @@ body.dark-theme {
   --muted: #b5b5b5;
   --timeline-line: rgba(110, 110, 110, 0.45);
   --box-bg: rgba(30, 30, 30, 0.88);
+  --bubble-hover-text: #0f0f0f;
   --chart-line-1: #748ffc;
   --chart-line-1-fill: rgba(116, 143, 252, 0.18);
   --chart-line-2: #3bc9db;

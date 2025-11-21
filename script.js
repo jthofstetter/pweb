@@ -188,7 +188,7 @@ function updateBubbleDetail(button) {
 
   bubbleLabel.textContent = label ?? "Special Interests";
   bubbleDescription.textContent =
-    description ?? "Mehr zu diesem Schwerpunkt folgt in Kürze.";
+    description ?? "More about this focus area is coming soon.";
 }
 
 function parsePercentage(value) {
