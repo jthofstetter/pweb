@@ -939,9 +939,8 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
 .bubble:focus-visible {
   transform: translate(-50%, -50%) scale(1.08);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
-  background: var(--accent);
-  color: var(--bubble-hover-text);
-  filter: brightness(1);
+  filter: invert(1) hue-rotate(180deg);
+  color: inherit;
   z-index: 2;
 }
 
@@ -1027,6 +1026,7 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
   .bubble:hover,
   .bubble:focus-visible {
     transform: scale(1.05);
+    filter: invert(1) hue-rotate(180deg);
   }
 
   .bubble:hover::after,
