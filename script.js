@@ -8,6 +8,17 @@ const bubbleLayoutQuery = window.matchMedia("(max-width: 720px)");
 const bubbleSafeInset = 18;
 let activeBubble = null;
 let pendingLayoutFrame = null;
+const introStatement = document.querySelector("[data-intro-statement]");
+const introToggle = document.querySelector("[data-intro-toggle]");
+const introMore = document.querySelector("[data-intro-more]");
+
+if (introStatement && introToggle && introMore) {
+  introToggle.addEventListener("click", () => {
+    const isExpanded = introStatement.classList.toggle("is-expanded");
+    introToggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+    introToggle.textContent = isExpanded ? "Weniger anzeigen" : "Mehr anzeigen";
+  });
+}
 
 const skillTrendTimeline = (() => {
   const startYear = 2020;

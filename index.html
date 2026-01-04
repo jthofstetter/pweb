@@ -33,7 +33,11 @@
             </div>
           </div>
         </div>
-        <div class="intro__statement" aria-label="Persönliches Statement">
+        <div
+          class="intro__statement"
+          aria-label="Persönliches Statement"
+          data-intro-statement
+        >
           <p>
             Ich war nie jemand, der Dinge einfach hinnimmt. Wenn ich etwas tue,
             möchte ich verstehen, warum es funktioniert. Dieser Gedanke hat mich
@@ -53,23 +57,33 @@
             dahinter analysieren – wie Menschen zu bestimmten Gedanken,
             Entscheidungen und Bindungen kommen.
           </p>
-          <p>
-            Genauso habe ich Systeme und Algorithmen betrachtet. Beim Rubik’s
-            Cube interessierte mich nicht das bunte Endergebnis, sondern die
-            Logik hinter den Abläufen – warum bestimmte Folgen zuverlässig zu
-            einem bestimmten Zustand führen. Das gleiche Prinzip hat mich beim
-            3x+1-Problem fasziniert: eine simple Regel, die komplexe und
-            scheinbar chaotische Pfade erzeugt. Und sobald man solche Abläufe in
-            einem Koordinatensystem grafisch darstellt, erkennt man Strukturen,
-            wo vorher nur Zufall schien.
-          </p>
-          <p>
-            Am Ende zieht sich ein roter Faden durch alles: Ich beobachte gern,
-            wie Dinge funktionieren – und suche nach den Mustern, die man nutzen
-            kann. Ob in Code, Daten oder Verhalten: Wenn man das System
-            versteht, wird alles klarer.
-          </p>
-          <p>– Hofstetter, 2025</p>
+          <div class="intro__statement-more" data-intro-more>
+            <p>
+              Genauso habe ich Systeme und Algorithmen betrachtet. Beim Rubik’s
+              Cube interessierte mich nicht das bunte Endergebnis, sondern die
+              Logik hinter den Abläufen – warum bestimmte Folgen zuverlässig zu
+              einem bestimmten Zustand führen. Das gleiche Prinzip hat mich beim
+              3x+1-Problem fasziniert: eine simple Regel, die komplexe und
+              scheinbar chaotische Pfade erzeugt. Und sobald man solche Abläufe in
+              einem Koordinatensystem grafisch darstellt, erkennt man Strukturen,
+              wo vorher nur Zufall schien.
+            </p>
+            <p>
+              Am Ende zieht sich ein roter Faden durch alles: Ich beobachte gern,
+              wie Dinge funktionieren – und suche nach den Mustern, die man nutzen
+              kann. Ob in Code, Daten oder Verhalten: Wenn man das System
+              versteht, wird alles klarer.
+            </p>
+            <p>– Hofstetter, 2025</p>
+          </div>
+          <button
+            class="intro__statement-toggle"
+            type="button"
+            data-intro-toggle
+            aria-expanded="false"
+          >
+            Mehr anzeigen
+          </button>
         </div>
       </section>
 
@@ -502,30 +516,6 @@
             <p>
               Dashboard für lokale Meet-Ups mit Echtzeit-Anmeldung und
               Feedback-Widgets.
-            </p>
-            <span class="project-card__cta">Details ansehen</span>
-          </a>
-          <a class="project-card" href="project7.html">
-            <h3>Projekt 7 &ndash; Motion Capture Rig</h3>
-            <p>
-              Eigenbau-Setup mit günstigen Sensoren, um Animationen für Games
-              aufzunehmen.
-            </p>
-            <span class="project-card__cta">Details ansehen</span>
-          </a>
-          <a class="project-card" href="project8.html">
-            <h3>Projekt 8 &ndash; Cube Trainer</h3>
-            <p>
-              Analyse-Tool, das Lösungswege für den Rubik’s Cube personalisiert
-              trainiert.
-            </p>
-            <span class="project-card__cta">Details ansehen</span>
-          </a>
-          <a class="project-card" href="project9.html">
-            <h3>Projekt 9 &ndash; Strategy Insight</h3>
-            <p>
-              Visualisiert Spielzüge historischer Matches und zeigt Muster für
-              schnelle Entscheidungen.
             </p>
             <span class="project-card__cta">Details ansehen</span>
           </a>

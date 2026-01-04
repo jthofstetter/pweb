@@ -183,6 +183,35 @@ section h2 {
   line-height: 1.75;
 }
 
+.intro__statement-more {
+  display: none;
+}
+
+.intro__statement.is-expanded .intro__statement-more {
+  display: block;
+}
+
+.intro__statement-toggle {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 31, 31, 0.15);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.intro__statement-toggle:hover,
+.intro__statement-toggle:focus-visible {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(31, 31, 31, 0.25);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
 .intro__statement::before,
 .intro__statement::after {
   position: absolute;
@@ -700,8 +729,7 @@ section h2 {
   border-top-color: var(--skill-tooltip-bg, rgba(0, 0, 0, 0.82));
 }
 
-.skill-toggle:hover .skill-toggle__info,
-.skill-toggle:focus-within .skill-toggle__info {
+.skill-toggle:hover .skill-toggle__info {
   opacity: 1;
   transform: translate(-50%, 0);
 }
@@ -737,8 +765,7 @@ body.dark-theme .skill-toggle {
   color: rgba(245, 245, 245, 0.94);
 }
 
-body.dark-theme .skill-toggle:hover,
-body.dark-theme .skill-toggle:focus-within {
+body.dark-theme .skill-toggle:hover {
   box-shadow: 0 26px 52px rgba(0, 0, 0, 0.65);
 }
 
@@ -1429,6 +1456,20 @@ body.dark-theme .intro__statement {
 body.dark-theme .intro__statement::before,
 body.dark-theme .intro__statement::after {
   color: rgba(255, 255, 255, 0.18);
+}
+
+body.dark-theme .intro__statement-toggle {
+  background: rgba(18, 18, 18, 0.88);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #f2f2f2;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-theme .intro__statement-toggle:hover,
+body.dark-theme .intro__statement-toggle:focus-visible {
+  background: rgba(24, 24, 24, 0.98);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.55);
 }
 
 body.dark-theme .intro__info h1 {
