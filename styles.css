@@ -1683,6 +1683,34 @@ body.dark-theme .footer {
     margin-bottom: 5rem;
   }
 
+  section h2 {
+    letter-spacing: 0.12rem;
+    font-size: 1.65rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .intro {
+    gap: 2.5rem;
+  }
+
+  .intro__content {
+    gap: 2.25rem;
+  }
+
+  .intro__info h1 {
+    letter-spacing: 0.2rem;
+  }
+
+  .intro__statement {
+    border-radius: 1.25rem;
+    text-align: left;
+  }
+
+  .intro__statement::before,
+  .intro__statement::after {
+    display: none;
+  }
+
   .timeline__wrapper {
     padding: 2.5rem 0 3rem;
   }
@@ -1709,5 +1737,158 @@ body.dark-theme .footer {
 
   .detail {
     padding: 3rem 1.25rem 4rem;
+  }
+
+  .detail__contributors {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+  }
+
+  .hobby {
+    gap: 1.75rem;
+  }
+
+  .project-card {
+    padding: 1.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 2.5rem 1.1rem 4rem;
+  }
+
+  .intro__content {
+    grid-template-columns: 1fr;
+  }
+
+  .intro__portrait {
+    width: min(100%, 320px);
+  }
+
+  .intro__statement {
+    padding: 1.5rem;
+  }
+
+  .intro__statement-toggle {
+    width: 100%;
+    text-align: center;
+  }
+
+  .timeline__line {
+    left: 0.85rem;
+  }
+
+  .timeline__item {
+    padding-left: 2.4rem;
+  }
+
+  .timeline__item::before {
+    left: 0.85rem;
+  }
+
+  .timeline__box {
+    padding: 1.75rem;
+  }
+
+  .skills__languages {
+    gap: 1.25rem;
+  }
+
+  .skill-progress {
+    padding: 2.2rem 1.25rem;
+  }
+
+  .skill-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .skill-toggle__info {
+    width: min(90vw, 280px);
+  }
+
+  .bubble-chart {
+    padding: 1.5rem 1.1rem;
+    gap: 1rem;
+  }
+
+  .hobby {
+    grid-template-columns: 1fr;
+  }
+
+  .hobby__image {
+    min-height: 160px;
+  }
+
+  .projects__grid {
+    gap: 1.5rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .detail {
+    padding: 2.5rem 1rem 3.5rem;
+  }
+
+  .detail__header h1 {
+    letter-spacing: 0.15rem;
+  }
+
+  .detail__contributors-count {
+    font-size: 0.85rem;
+  }
+
+  .detail__media-placeholder {
+    aspect-ratio: 4 / 3;
+  }
+
+  .detail__list li {
+    padding-left: 1rem;
+  }
+
+  .footer {
+    padding-top: 2.5rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .theme-toggle {
+    left: 1rem;
+    bottom: 1rem;
+    padding: 0.7rem 1.1rem 0.7rem 0.85rem;
+    gap: 0.65rem;
+  }
+
+  .theme-toggle__text {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  section h2 {
+    font-size: 1.4rem;
+  }
+
+  .intro__info h1 {
+    letter-spacing: 0.12rem;
+    font-size: clamp(2.1rem, 10vw, 2.8rem);
+  }
+
+  .timeline__box {
+    padding: 1.5rem;
+  }
+
+  .project-card {
+    padding: 1.4rem;
+  }
+
+  .bubble-chart {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .skill-toggle__label {
+    font-size: 0.8rem;
   }
 }

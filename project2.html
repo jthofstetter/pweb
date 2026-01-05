@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projekt 2 &ndash; Superstruct</title>
+    <title>Project 2 &ndash; Superstruct</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,77 +15,73 @@
   </head>
   <body>
     <main class="detail">
-      <a class="detail__back" href="index.html">Zurück</a>
+      <a class="detail__back" href="index.html">Back</a>
       <header class="detail__header">
-        <h1>Projekt 2</h1>
+        <h1>Project 2</h1>
         <p>Superstruct</p>
-        <div class="detail__contributors" aria-label="Teamgröße">
+        <div class="detail__contributors" aria-label="Team size">
           <span class="detail__contributors-icon" aria-hidden="true">👥</span>
-          <span class="detail__contributors-count">Teamgröße: 6 Personen</span>
+          <span class="detail__contributors-count">Team size: 6 people</span>
         </div>
       </header>
       <section class="detail__content">
-        <div class="detail__media-placeholder">Bildplatzhalter</div>
+        <div class="detail__media-placeholder">Image placeholder</div>
         <p>
-          Superstruct ist ein 3D-Unity-Spiel, das wir als Schulprojekt gebaut
-          haben. Der Fahrstuhl im Zentrum dient als Hub zwischen mehreren
-          Stockwerken voller Minigames. In jedem Abschnitt sammeln die
-          Spieler:innen Ressourcen, um den Fahrstuhl mit Energie zu versorgen und
-          so die nächste Ebene freizuschalten.
+          Superstruct is a 3D Unity game we built as a school project. The
+          central elevator acts as a hub between multiple floors packed with
+          minigames. In each section, players collect resources to power the
+          elevator and unlock the next level.
         </p>
         <p>
-          Jede Etage stellt ein eigenes Szenario dar &ndash; von Geschicklichkeits-
-          Sequenzen bis hin zu kleinen Rätselräumen. Dadurch entsteht ein Loop
-          aus Erforschen, Sammeln und Upgraden, der die Spieler:innen motiviert,
-          immer weiter nach oben zu gelangen.
+          Each floor presents its own scenario &ndash; from dexterity sequences to
+          small puzzle rooms. That creates a loop of exploring, collecting, and
+          upgrading that keeps players motivated to climb higher.
         </p>
         <ul class="detail__list">
-          <li>Team: 6 Mitschüler:innen</li>
-          <li>Focus: Elevator-Hub, Ressourcen-Progression und Minispiel-Mix</li>
-          <li>Stage: Spielbarer Prototyp mit vertikalem Slice</li>
+          <li>Team: 6 classmates</li>
+          <li>Focus: Elevator hub, resource progression, and minigame mix</li>
+          <li>Stage: Playable prototype with vertical slice</li>
         </ul>
         <h2>Project Overview</h2>
         <p>
-          Der Code organisiert die Stockwerke als einzelne Unity-Szenen, die der
-          Fahrstuhl zur Laufzeit lädt. Ein Ressourcen-Manager verfolgt, welche
-          Items in den Minigames verdient werden und welche Upgrades damit
-          finanzierbar sind. Erst wenn genügend Material zusammenkommt, öffnet
-          sich die Tür zur nächsten Etage.
+          The code organizes floors as individual Unity scenes that the
+          elevator loads at runtime. A resource manager tracks which items are
+          earned in minigames and which upgrades those items can fund. The door
+          to the next floor only opens once enough material is collected.
         </p>
         <h2>Core Gameplay Features</h2>
         <ul class="detail__list">
           <li>
-            Zentraler Fahrstuhl als Navigationspunkt mit Übergangsanimationen
-            zwischen den Etagen.
+            Central elevator as the navigation point with transition animations
+            between floors.
           </li>
           <li>
-            Drei Minigame-Typen (Geschicklichkeit, Reaktion, Ressourcenpuzzle),
-            die nacheinander freigespielt werden.
+            Three minigame types (dexterity, reaction, resource puzzle) that
+            unlock sequentially.
           </li>
           <li>
-            Fortschrittsanzeige, die zeigt, wie viele Materialien noch fehlen, um
-            den Aufstieg zu schaffen.
+            Progress display showing how many materials are still missing to
+            reach the next level.
           </li>
         </ul>
         <h2>Tech Stack</h2>
         <ul class="detail__list">
           <li>Unity Engine (3D)</li>
-          <li>C# Gameplay-Skripting</li>
-          <li>Unity Animator &amp; Timeline für Cutscenes</li>
+          <li>C# gameplay scripting</li>
+          <li>Unity Animator &amp; Timeline for cutscenes</li>
         </ul>
         <h2>My Contributions</h2>
         <ul class="detail__list">
           <li>
-            Aufbau der Aufzugslogik inklusive Zustandsmaschine für Etagen und
-            Übergänge.
+            Built the elevator logic, including a state machine for floors and
+            transitions.
           </li>
           <li>
-            Entwicklung zweier Minigames mit Ressourcen-Belohnungen und
-            Schwierigkeitskurve.
+            Developed two minigames with resource rewards and difficulty curve.
           </li>
           <li>
-            Erstellung der UI-Anzeigen für Fortschritt, Inventar und
-            Zielvorgaben auf jedem Stockwerk.
+            Created UI displays for progress, inventory, and objectives on
+            each floor.
           </li>
         </ul>
       </section>
