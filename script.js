@@ -16,7 +16,7 @@ if (introStatement && introToggle && introMore) {
   introToggle.addEventListener("click", () => {
     const isExpanded = introStatement.classList.toggle("is-expanded");
     introToggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
-    introToggle.textContent = isExpanded ? "Weniger anzeigen" : "Mehr anzeigen";
+    introToggle.textContent = isExpanded ? "Show less" : "Show more";
   });
 }
 
@@ -108,7 +108,7 @@ const rawSkillTrendDatasetConfig = [
       "Used to practice low-level fundamentals like memory management and system-level thinking.",
   },
   {
-    label: "Russisch",
+    label: "Russian",
     startYear: 2022,
     quarterlyValues: [
       0,
@@ -393,7 +393,7 @@ function renderSkillTrendControls() {
     info.className = "skill-toggle__info";
     info.textContent =
       description ||
-      "Kurzer Kontext folgt – was, wo und warum die Technologie genutzt wurde.";
+      "Short context is coming soon—what, where, and why the technology was used.";
 
     wrapper.appendChild(input);
     wrapper.appendChild(track);
@@ -489,8 +489,8 @@ function createThemeToggle() {
   button.className = "theme-toggle";
   button.setAttribute("aria-pressed", "false");
   button.setAttribute("data-theme-toggle", "");
-  button.setAttribute("aria-label", "Dark-Mode umschalten");
-  button.setAttribute("title", "Dark-Mode umschalten");
+  button.setAttribute("aria-label", "Toggle dark mode");
+  button.setAttribute("title", "Toggle dark mode");
 
   button.innerHTML = `
     <span class="theme-toggle__orb" aria-hidden="true"></span>
@@ -621,7 +621,7 @@ if (skillTrendCtx) {
       scales: {
         x: {
           title: {
-            text: "Jahr",
+            text: "Year",
             display: true,
             color: axisColor,
           },
