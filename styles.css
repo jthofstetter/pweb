@@ -189,6 +189,7 @@ section h2 {
 
 .intro__statement.is-expanded .intro__statement-more {
   display: block;
+  margin-top: 1.5rem;
 }
 
 .intro__statement-toggle {
@@ -492,10 +493,12 @@ section h2 {
   .skills__languages {
     grid-auto-flow: row;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    justify-items: center;
   }
 
   .podium__column {
-    align-items: stretch;
+    align-items: center;
+    text-align: center;
   }
 
   .podium__flag,
@@ -1797,6 +1800,15 @@ body.dark-theme .footer {
 
   .skill-progress {
     padding: 2.2rem 1.25rem;
+  }
+
+  .skill-progress__chart {
+    height: 320px;
+    padding: 1.1rem;
+  }
+
+  #skillTrend {
+    height: 100%;
   }
 
   .skill-toggle {
