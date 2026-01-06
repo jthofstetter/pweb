@@ -18,67 +18,85 @@
       <a class="detail__back" href="index.html">Back</a>
       <header class="detail__header">
         <h1>RealityCheck</h1>
-        <p>Insights dashboard</p>
+        <p>Personal self-reflection system</p>
         <div class="detail__contributors" aria-label="Team size">
           <span class="detail__contributors-icon" aria-hidden="true">👤</span>
           <span class="detail__contributors-count">Team size: 1 person</span>
         </div>
       </header>
       <section class="detail__content">
-        <div class="detail__media-placeholder">RealityCheck analytics mockup</div>
-        <p><strong>Status:</strong> In Development</p>
-        <p><strong>Focus:</strong> Health forecasting companion</p>
-        <p><strong>Stage:</strong> Data model in progress</p>
-        <p>
-          RealityCheck Insights is a companion app that tracks meals, habits,
-          and body data to deliver blunt weekly forecasts. It helps you
-          understand the long-term impact of today’s decisions.
+        <p class="detail__lead">
+          RealityCheck is a personal, data-driven self-reflection system that
+          tracks daily habits, routines, and decisions to provide an honest
+          analysis of long-term progress. It focuses on radical honesty,
+          measurable behavior, and clear consequences rather than motivation
+          without data.
         </p>
+        <div class="detail__grid detail__grid--compact">
+          <figure class="detail__media">
+            <img
+              src="rc1.jpg"
+              alt="RealityCheck screenshot of daily tracking and entries"
+              loading="lazy"
+            />
+            <figcaption>Daily tracking and entry overview.</figcaption>
+          </figure>
+          <figure class="detail__media">
+            <img
+              src="rc2.jpg"
+              alt="RealityCheck screenshot of habit trends and analytics"
+              loading="lazy"
+            />
+            <figcaption>Trend insights and habit analytics.</figcaption>
+          </figure>
+          <figure class="detail__media">
+            <img
+              src="rc3.jpg"
+              alt="RealityCheck screenshot of the Reality Check feedback"
+              loading="lazy"
+            />
+            <figcaption>Reality Check feedback and projections.</figcaption>
+          </figure>
+        </div>
+        <h2>What RealityCheck Does</h2>
         <p>
-          RealityCheck captures what I eat, how I move, and how I feel. From
-          these inputs, trend lines surface hidden patterns and deliver a weekly
-          recommendation to stay the course or adjust. Users can dive into macro
-          projections or simply follow the next best step the app suggests.
+          RealityCheck combines daily tracking, automated evaluation, and
+          periodic reflection to make progress or stagnation visible. It
+          captures:
         </p>
-        <p>
-          Long-term motivation comes from transparency: RealityCheck does not
-          sugarcoat the outlook. If current habits point to weight gain or energy
-          dips, charts and copy make it clear and deliver concrete countersteps.
-        </p>
-        <h2>Highlights</h2>
         <ul class="detail__list">
+          <li>Daily entries (discipline, training, nutrition, focus, mood).</li>
+          <li>Body metrics such as weight.</li>
+          <li>Routines and habits.</li>
+          <li>Self-defined goals.</li>
+        </ul>
+        <h2>Core Feature: The Reality Check</h2>
+        <ul class="detail__list">
+          <li>Analyzes historical entries and detects trends.</li>
+          <li>Flags improvement, stagnation, or regression.</li>
+          <li>Delivers direct, honest feedback with no empty motivation.</li>
+        </ul>
+        <h2>Technical Setup (High Level)</h2>
+        <ul class="detail__list">
+          <li>Mobile app: Android (Kotlin / Jetpack Compose).</li>
+          <li>Backend &amp; storage: Firebase.</li>
+          <li>Evaluation logic for trends and projections.</li>
+          <li>Planned extension: AI-supported analysis and forecasting.</li>
+        </ul>
+        <h2>Personal Approach</h2>
+        <ul class="detail__list">
+          <li><strong>Radical honesty:</strong> no excuses, no filters.</li>
+          <li><strong>Measurability:</strong> only what is measured counts.</li>
           <li>
-            Meal logging with barcode scanning and automatic macronutrient
-            classification.
-          </li>
-          <li>
-            Integrations for wearables and smart scales for effortless data
-            input.
-          </li>
-          <li>
-            Weekly &ldquo;RealityCheck&rdquo; report with trend charts and habit
-            recommendations.
+            <strong>Consequences:</strong> every decision has long-term impact.
           </li>
         </ul>
-        <h2>Tech Stack</h2>
+        <h2>My Contribution</h2>
         <ul class="detail__list">
-          <li>Next.js</li>
-          <li>TypeScript</li>
-          <li>Supabase</li>
-          <li>TensorFlow Lite</li>
-          <li>Chart.js</li>
-        </ul>
-        <h2>My Contributions</h2>
-        <ul class="detail__list">
-          <li>
-            Built the forecasting model for weight and energy trends.
-          </li>
-          <li>
-            Set up the weekly digest workflow with email and in-app summaries.
-          </li>
-          <li>
-            Wrote UX copy that combines honesty with concrete next steps.
-          </li>
+          <li>Conceived the idea, philosophy, and rules.</li>
+          <li>Designed the UX, structure, and flows.</li>
+          <li>Developed the Android app, logic, and data model.</li>
+          <li>Continuously iterated based on real daily use.</li>
         </ul>
       </section>
     </main>

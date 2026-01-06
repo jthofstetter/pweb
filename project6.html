@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Diplomarbeit</title>
+    <title>Diploma Thesis</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,8 +17,8 @@
     <main class="detail">
       <a class="detail__back" href="index.html">Back</a>
       <header class="detail__header">
-        <h1>Diplomarbeit</h1>
-        <p>KI-Modell zur Formularevaluierung (W.E.B.)</p>
+        <h1>Diploma Thesis</h1>
+        <p>AI model for form evaluation (W.E.B.)</p>
         <div class="detail__contributors" aria-label="Team size">
           <span class="detail__contributors-icon" aria-hidden="true">👥</span>
           <span class="detail__contributors-count">Team size: 1 person</span>
@@ -26,81 +26,77 @@
       </header>
       <section class="detail__content">
         <p class="detail__lead">
-          Für die Firma W.E.B. wurde im Rahmen der Diplomarbeit
-          &ldquo;KI-Modell zur Formularevaluierung&rdquo; ein praxisnahes
-          KI-System entwickelt, das Dokumente wie PDFs, gescannte Formulare
-          oder Bilder automatisiert analysiert und relevante Informationen
-          strukturiert extrahiert &ndash; vollständig lokal und ohne Cloud-
-          Abhängigkeit.
+          For W.E.B., the diploma thesis &ldquo;AI model for form
+          evaluation&rdquo; delivered a practical AI system that automatically
+          analyzes documents such as PDFs, scanned forms, or images and
+          extracts relevant information in a structured format &ndash; fully
+          local and without cloud dependencies.
         </p>
         <figure class="detail__media">
           <img
             src="diplodarstellung.png"
-            alt="Strukturdiagramm der Diplomarbeit mit OCR, LLM-Pipeline und Datenbank"
+            alt="System structure diagram with OCR, LLM pipeline, and database"
             loading="lazy"
           />
           <figcaption>
-            Struktur des Systems: OCR-Extraktion, LLM-Analyse (inkl. Donut-
-            Vergleich) und Datenablage.
+            System structure: OCR extraction, LLM analysis (including the
+            Donut comparison), and data storage.
           </figcaption>
         </figure>
         <figure class="detail__media detail__media--compact">
           <img
             src="Ablaufdiplo.png"
-            alt="Ablaufdiagramm der Anfrageverarbeitung mit Upload, OCR, LLM und Speicherung"
+            alt="Request workflow diagram with upload, OCR, LLM, and storage"
             loading="lazy"
           />
           <figcaption>
-            Ablauf einer Anfrage: Dokumenten-Upload, Texterkennung, KI-
-            Verarbeitung und Ausgabe als JSON.
+            Request flow: document upload, text recognition, AI processing,
+            and JSON output.
           </figcaption>
         </figure>
-        <h2>Technischer Ablauf (End-to-End)</h2>
+        <h2>End-to-End Workflow</h2>
         <ul class="detail__list">
           <li>
-            <strong>Dokumenteneingabe:</strong> Upload von PDF, Bild oder DOCX;
-            Speicherung und Vorverarbeitung im System.
+            <strong>Document intake:</strong> Upload PDFs, images, or DOCX;
+            files are stored and preprocessed in the system.
           </li>
           <li>
-            <strong>Texterkennung (OCR):</strong> Tesseract wandelt Scans in
-            Text um, inklusive Bereinigung und Strukturierung.
+            <strong>OCR text recognition:</strong> Tesseract converts scans to
+            text, including cleanup and structuring.
           </li>
           <li>
-            <strong>KI-Verarbeitung (LLM):</strong> Lokales LLM erkennt
-            Formularfelder und Werte und liefert strukturierte JSON-Ausgaben.
+            <strong>AI processing (LLM):</strong> A local LLM detects form
+            fields and values and returns structured JSON outputs.
           </li>
           <li>
-            <strong>Alternative Pipeline:</strong> Donut verarbeitet Dokumente
-            direkt als Bild, um OCR-basierte Ergebnisse zu vergleichen.
+            <strong>Alternative pipeline:</strong> Donut processes documents
+            directly as images to compare against OCR-based results.
           </li>
           <li>
-            <strong>Speicherung &amp; Status:</strong> Ergebnisse werden in der
-            Datenbank gespeichert, Dokumente bleiben abrufbar, Status-Updates
-            erfolgen in Echtzeit.
+            <strong>Storage &amp; status:</strong> Results are stored in the
+            database, documents remain retrievable, and statuses update in
+            real time.
           </li>
         </ul>
-        <h2>Mein Beitrag (KI-Fokus)</h2>
+        <h2>My Contribution (AI Focus)</h2>
         <ul class="detail__list">
           <li>
-            <strong>Modell-Evaluation:</strong> Vergleich von klassischen,
-            multimodalen und dokumentenspezifischen Open-Source-Modellen nach
-            Genauigkeit, Rechenaufwand und JSON-Fähigkeit. Ergebnis: Qwen 2.5
-            als Hauptmodell.
+            <strong>Model evaluation:</strong> Compared classic, multimodal,
+            and document-specific open-source models for accuracy, compute
+            cost, and JSON output quality. Result: Qwen 2.5 as the main model.
           </li>
           <li>
-            <strong>Prompt Engineering:</strong> Entwicklung robuster Prompts
-            für zuverlässige Formularfeld-Erkennung und konsistente
-            maschinenlesbare JSON-Strukturen trotz OCR-Fehlern.
+            <strong>Prompt engineering:</strong> Designed robust prompts for
+            reliable field detection and consistent machine-readable JSON even
+            with OCR noise.
           </li>
           <li>
-            <strong>KI-Pipeline &amp; Logik:</strong> Aufbereitung des OCR-
-            Textes, Validierung der Modellantworten und Rückgabe strukturierter
-            Ergebnisse.
+            <strong>AI pipeline &amp; logic:</strong> Prepared OCR text,
+            validated model responses, and returned structured outputs.
           </li>
           <li>
-            <strong>Lokaler Betrieb:</strong> Umsetzung eines vollständig
-            lokalen KI-Stacks mit GPU-Beschleunigung (CUDA/cuDNN) und voller
-            Datenkontrolle.
+            <strong>Local deployment:</strong> Implemented a fully local AI
+            stack with GPU acceleration (CUDA/cuDNN) and full data control.
           </li>
         </ul>
       </section>
