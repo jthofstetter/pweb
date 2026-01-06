@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 6 &ndash; Event Dashboard</title>
+    <title>Diploma Thesis</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,29 +17,86 @@
     <main class="detail">
       <a class="detail__back" href="index.html">Back</a>
       <header class="detail__header">
-        <h1>Project 6</h1>
-        <p>Event Dashboard</p>
+        <h1>Diploma Thesis</h1>
+        <p>AI model for form evaluation (W.E.B.)</p>
         <div class="detail__contributors" aria-label="Team size">
           <span class="detail__contributors-icon" aria-hidden="true">👥</span>
-          <span class="detail__contributors-count">Team size: 3 people</span>
+          <span class="detail__contributors-count">Team size: 1 person</span>
         </div>
       </header>
       <section class="detail__content">
-        <div class="detail__media-placeholder">Image placeholder</div>
-        <p>
-          The event dashboard aggregates data on local meetups and workshops.
-          Participants can register, leave feedback, and track past events.
+        <p class="detail__lead">
+          For W.E.B., the diploma thesis &ldquo;AI model for form
+          evaluation&rdquo; delivered a practical AI system that automatically
+          analyzes documents such as PDFs, scanned forms, or images and
+          extracts relevant information in a structured format &ndash; fully
+          local and without cloud dependencies.
         </p>
+        <figure class="detail__media">
+          <img
+            src="diplodarstellung.png"
+            alt="System structure diagram with OCR, LLM pipeline, and database"
+            loading="lazy"
+          />
+          <figcaption>
+            System structure: OCR extraction, LLM analysis (including the
+            Donut comparison), and data storage.
+          </figcaption>
+        </figure>
+        <figure class="detail__media detail__media--compact">
+          <img
+            src="Ablaufdiplo.png"
+            alt="Request workflow diagram with upload, OCR, LLM, and storage"
+            loading="lazy"
+          />
+          <figcaption>
+            Request flow: document upload, text recognition, AI processing,
+            and JSON output.
+          </figcaption>
+        </figure>
+        <h2>End-to-End Workflow</h2>
         <ul class="detail__list">
-          <li>Team: 3 contributors</li>
-          <li>Technologies: TypeScript, SvelteKit, Supabase, Tailwind CSS</li>
           <li>
-            Features: live attendee counts, real-time session feedback, and
-            automated summaries
+            <strong>Document intake:</strong> Upload PDFs, images, or DOCX;
+            files are stored and preprocessed in the system.
           </li>
           <li>
-            Learning focus: reactive frontends, data visualization, and cloud
-            deployment
+            <strong>OCR text recognition:</strong> Tesseract converts scans to
+            text, including cleanup and structuring.
+          </li>
+          <li>
+            <strong>AI processing (LLM):</strong> A local LLM detects form
+            fields and values and returns structured JSON outputs.
+          </li>
+          <li>
+            <strong>Alternative pipeline:</strong> Donut processes documents
+            directly as images to compare against OCR-based results.
+          </li>
+          <li>
+            <strong>Storage &amp; status:</strong> Results are stored in the
+            database, documents remain retrievable, and statuses update in
+            real time.
+          </li>
+        </ul>
+        <h2>My Contribution (AI Focus)</h2>
+        <ul class="detail__list">
+          <li>
+            <strong>Model evaluation:</strong> Compared classic, multimodal,
+            and document-specific open-source models for accuracy, compute
+            cost, and JSON output quality. Result: Qwen 2.5 as the main model.
+          </li>
+          <li>
+            <strong>Prompt engineering:</strong> Designed robust prompts for
+            reliable field detection and consistent machine-readable JSON even
+            with OCR noise.
+          </li>
+          <li>
+            <strong>AI pipeline &amp; logic:</strong> Prepared OCR text,
+            validated model responses, and returned structured outputs.
+          </li>
+          <li>
+            <strong>Local deployment:</strong> Implemented a fully local AI
+            stack with GPU acceleration (CUDA/cuDNN) and full data control.
           </li>
         </ul>
       </section>
