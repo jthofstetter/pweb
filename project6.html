@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 6 &ndash; Event Dashboard</title>
+    <title>Diplomarbeit</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,29 +17,90 @@
     <main class="detail">
       <a class="detail__back" href="index.html">Back</a>
       <header class="detail__header">
-        <h1>Project 6</h1>
-        <p>Event Dashboard</p>
+        <h1>Diplomarbeit</h1>
+        <p>KI-Modell zur Formularevaluierung (W.E.B.)</p>
         <div class="detail__contributors" aria-label="Team size">
           <span class="detail__contributors-icon" aria-hidden="true">👥</span>
-          <span class="detail__contributors-count">Team size: 3 people</span>
+          <span class="detail__contributors-count">Team size: 1 person</span>
         </div>
       </header>
       <section class="detail__content">
-        <div class="detail__media-placeholder">Image placeholder</div>
-        <p>
-          The event dashboard aggregates data on local meetups and workshops.
-          Participants can register, leave feedback, and track past events.
+        <p class="detail__lead">
+          Für die Firma W.E.B. wurde im Rahmen der Diplomarbeit
+          &ldquo;KI-Modell zur Formularevaluierung&rdquo; ein praxisnahes
+          KI-System entwickelt, das Dokumente wie PDFs, gescannte Formulare
+          oder Bilder automatisiert analysiert und relevante Informationen
+          strukturiert extrahiert &ndash; vollständig lokal und ohne Cloud-
+          Abhängigkeit.
         </p>
+        <figure class="detail__media">
+          <img
+            src="diplodarstellung.png"
+            alt="Strukturdiagramm der Diplomarbeit mit OCR, LLM-Pipeline und Datenbank"
+            loading="lazy"
+          />
+          <figcaption>
+            Struktur des Systems: OCR-Extraktion, LLM-Analyse (inkl. Donut-
+            Vergleich) und Datenablage.
+          </figcaption>
+        </figure>
+        <figure class="detail__media">
+          <img
+            src="Ablaufdiplo.png"
+            alt="Ablaufdiagramm der Anfrageverarbeitung mit Upload, OCR, LLM und Speicherung"
+            loading="lazy"
+          />
+          <figcaption>
+            Ablauf einer Anfrage: Dokumenten-Upload, Texterkennung, KI-
+            Verarbeitung und Ausgabe als JSON.
+          </figcaption>
+        </figure>
+        <h2>Technischer Ablauf (End-to-End)</h2>
         <ul class="detail__list">
-          <li>Team: 3 contributors</li>
-          <li>Technologies: TypeScript, SvelteKit, Supabase, Tailwind CSS</li>
           <li>
-            Features: live attendee counts, real-time session feedback, and
-            automated summaries
+            <strong>Dokumenteneingabe:</strong> Upload von PDF, Bild oder DOCX;
+            Speicherung und Vorverarbeitung im System.
           </li>
           <li>
-            Learning focus: reactive frontends, data visualization, and cloud
-            deployment
+            <strong>Texterkennung (OCR):</strong> Tesseract wandelt Scans in
+            Text um, inklusive Bereinigung und Strukturierung.
+          </li>
+          <li>
+            <strong>KI-Verarbeitung (LLM):</strong> Lokales LLM erkennt
+            Formularfelder und Werte und liefert strukturierte JSON-Ausgaben.
+          </li>
+          <li>
+            <strong>Alternative Pipeline:</strong> Donut verarbeitet Dokumente
+            direkt als Bild, um OCR-basierte Ergebnisse zu vergleichen.
+          </li>
+          <li>
+            <strong>Speicherung &amp; Status:</strong> Ergebnisse werden in der
+            Datenbank gespeichert, Dokumente bleiben abrufbar, Status-Updates
+            erfolgen in Echtzeit.
+          </li>
+        </ul>
+        <h2>Mein Beitrag (KI-Fokus)</h2>
+        <ul class="detail__list">
+          <li>
+            <strong>Modell-Evaluation:</strong> Vergleich von klassischen,
+            multimodalen und dokumentenspezifischen Open-Source-Modellen nach
+            Genauigkeit, Rechenaufwand und JSON-Fähigkeit. Ergebnis: Qwen 2.5
+            als Hauptmodell.
+          </li>
+          <li>
+            <strong>Prompt Engineering:</strong> Entwicklung robuster Prompts
+            für zuverlässige Formularfeld-Erkennung und konsistente
+            maschinenlesbare JSON-Strukturen trotz OCR-Fehlern.
+          </li>
+          <li>
+            <strong>KI-Pipeline &amp; Logik:</strong> Aufbereitung des OCR-
+            Textes, Validierung der Modellantworten und Rückgabe strukturierter
+            Ergebnisse.
+          </li>
+          <li>
+            <strong>Lokaler Betrieb:</strong> Umsetzung eines vollständig
+            lokalen KI-Stacks mit GPU-Beschleunigung (CUDA/cuDNN) und voller
+            Datenkontrolle.
           </li>
         </ul>
       </section>
