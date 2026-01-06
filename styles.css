@@ -1175,6 +1175,10 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+.detail__grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .detail__card {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(246, 246, 246, 0.95));
   border: 1px solid rgba(31, 31, 31, 0.08);
@@ -1262,6 +1266,34 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12rem;
+}
+
+.detail__media {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.detail__media--compact {
+  max-width: 60%;
+  justify-self: center;
+}
+
+.detail__media--small img {
+  max-height: 260px;
+  object-fit: cover;
+}
+
+.detail__media img {
+  width: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(31, 31, 31, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.detail__media figcaption {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .detail__list {
@@ -1745,6 +1777,10 @@ body.dark-theme .footer {
   .detail__contributors {
     flex-wrap: wrap;
     row-gap: 0.35rem;
+  }
+
+  .detail__grid--three {
+    grid-template-columns: 1fr;
   }
 
   .hobby {
