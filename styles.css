@@ -1279,7 +1279,7 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
 }
 
 .detail__media--small img {
-  max-height: 260px;
+  height: clamp(240px, 30vw, 360px);
   object-fit: cover;
 }
 
