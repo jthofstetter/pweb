@@ -1296,6 +1296,12 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
   line-height: 1.6;
 }
 
+.detail__content a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
 .detail__list {
   list-style: none;
   display: grid;
