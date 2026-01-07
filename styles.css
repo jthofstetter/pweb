@@ -1279,8 +1279,8 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
 }
 
 .detail__media--small img {
-  height: clamp(240px, 30vw, 360px);
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .detail__media img {
@@ -1294,6 +1294,12 @@ body.dark-theme .skill-toggle input:checked + .skill-toggle__track .skill-toggle
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.detail__content a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
 }
 
 .detail__list {
